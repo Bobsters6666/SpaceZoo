@@ -1,15 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import './AnimalCard.css';
+import Button from '@mui/material/Button';
 
-const animals = [
+const animals = [ // List of animals. When API key is added, randomly picked. 
   'Lion',
   'Tiger',
   'Elephant',
@@ -29,7 +24,7 @@ const randomAnimal = () => {
 
 const exampleAnimal = randomAnimal();
 
-export default function ImgMediaCard() {
+export default function AnimalCard() {
   const [animalDetails, setAnimalDetails] = useState({ detailedName: '', slogan: '' });
 
   const fetchAnimalDetails = async (animal) => {
@@ -57,24 +52,14 @@ export default function ImgMediaCard() {
   }, []);
 
   return (
-    <Card className="AnimalCard">
-      <CardMedia
-        component="img"
-        height="140"
-        //image="/static/images/cards/contemplative-reptile.jpg" // Image
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {animalDetails.detailedName}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {animalDetails.slogan}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" className='Button'>Trade</Button>
-        <Button size="small" className='Button'>See More</Button>
-      </CardActions>
-    </Card>
-  );
+    <ul class="card-wrapper">
+      <li class="card">
+        <img src="/frog.jpg" alt="frog"></img>
+        <h3>{animalDetails.detailedName}</h3>
+        <p>{animalDetails.slogan}</p>
+      </li>
+    </ul>
+    
+    
+  );// Route the button or delete if not used. <Button class="card-button" variant="text">More</Button>
 }
