@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import GoogleMap from "@/components/GoogleMap";
-import TempMap from "@/components/TempMap";
+import AnimalCard from "@/components/AnimalCard";
 
 export default function Home() {
   return (
@@ -12,8 +12,8 @@ export default function Home() {
         layout="fill"
         priority
         className="w-screen h-screen"
-      /> */}
-      <TempMap />
+      />
+      <AnimalCard></AnimalCard>
     </main>
   );
 }
