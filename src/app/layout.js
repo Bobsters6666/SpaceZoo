@@ -15,10 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <div className="flex flex-col justify-start">
-        <NavBar />
-        {children}
+      <body className={`${quicksand.className} overflow-hidden`}>
+        <div className="flex flex-col justify-start ">
+          <NavBar />
+          {children}
         </div>
       </body>
     </html>

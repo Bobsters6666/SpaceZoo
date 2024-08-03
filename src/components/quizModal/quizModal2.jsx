@@ -80,3 +80,4 @@ export function QuizModal2({ onNextQuestion }) {
         </div>
     );
 }
+

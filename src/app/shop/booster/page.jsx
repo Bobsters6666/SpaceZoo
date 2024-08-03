@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./booster.module.css";
 import AnimalCard from "../../../components/AnimalCard";
-import { useState, useRef, useEffect } from "react";
 
-export default function page() {
+export default function Page() {
   const [isAnimating, setIsAnimating] = useState(true);
   const [showBooster, setShowBooster] = useState(true);
   const [showFlyingDivs, setShowFlyingDivs] = useState(false);
@@ -12,6 +11,8 @@ export default function page() {
   const [isRotated, setIsRotated] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const [cardAnimations, setCardAnimations] = useState([false, false, false]);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const handleClick = () => {
     setIsAnimating(!isAnimating);
@@ -22,10 +23,27 @@ export default function page() {
       setShowFlyingDivs(true);
       setIsShaking(false);
       setShowBooster(false);
+      const interval = setInterval(() => {
+        setCardAnimations((prev) => {
+          const newAnimations = [...prev];
+          const index = newAnimations.findIndex((animation) => !animation);
+          if (index !== -1) {
+            newAnimations[index] = true;
+          }
+          return newAnimations;
+        });
+      }, 1000);
+      // stop the interval after 3 seconds
+      setTimeout(() => {
+        clearInterval(interval);
+      }, 3000);
     }, 500);
   };
 
   const boosterRef = useRef(null);
+  setTimeout(() => {
+    setLoading(false);
+  }, 200);
 
   useEffect(() => {
     if (boosterRef.current) {
@@ -37,76 +55,58 @@ export default function page() {
     }
   }, [isAnimating]);
 
-  useEffect(() => {
-    // Add a new card animation every 1 seconds by setting each card animation to true in sequence
-    const interval = setInterval(() => {
-      setCardAnimations((prev) => {
-        const newAnimations = [...prev];
-        const index = newAnimations.findIndex((animation) => !animation);
-        if (index !== -1) {
-          newAnimations[index] = true;
-        }
-        return newAnimations;
-      });
-    }, 1000);
-    // stop the interval after 3 seconds
-    setTimeout(() => {
-      clearInterval(interval);
-    }, 2000);
-  }, [showFlyingDivs]);
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
 
   return (
-    <div className={styles.page}>
-      {showBooster && (
-        <div
-          ref={boosterRef}
-          className={`${styles.booster} ${isShaking ? styles.grow : ""}`}
-          onClick={handleClick}
-          style={{
-            animationPlayState: isAnimating ? "running" : "paused",
-            transform: isRotated ? "rotateY(90deg)" : "none",
-          }}
-        ></div>
-      )}
-      {cardAnimations[0] && (
-        <div
-          style={{
-            position: "relative",
-            top: divPosition.top + 100,
-            left: divPosition.left,
-          }}
-        >
-          <div className={styles.flyingdiv} style={{ top: 0, left: 0 }}>
-            <AnimalCard />
-          </div>
+
+    <>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className={styles.page}>
+          {showBooster && (
+            <div
+              ref={boosterRef}
+              className={`${styles.booster} ${isShaking ? styles.grow : ""}`}
+              onClick={handleClick}
+              style={{
+                animationPlayState: isAnimating ? "running" : "paused",
+                transform: isRotated ? "rotateY(90deg)" : "none",
+              }}
+            ></div>
+          )}
+          {cardAnimations.map(
+            (showCard, index) =>
+              showCard && (
+                <div
+                  key={index}
+                  style={{
+                    position: "relative",
+                    top: divPosition.top + 100,
+                    left: divPosition.left,
+                    zIndex: hoveredIndex === index ? 1000 : 1, // Set high z-index on hover
+                  }}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div
+                    className={styles.flyingdiv}
+                    style={{ top: index * 80, left: index * 150 }}
+                  >
+                    <AnimalCard />
+                  </div>
+                </div>
+              )
+          )}
         </div>
       )}
-      {cardAnimations[1] && (
-        <div
-          style={{
-            position: "relative",
-            top: divPosition.top + 100,
-            left: divPosition.left,
-          }}
-        >
-          <div className={styles.flyingdiv} style={{ top: 80, left: 150 }}>
-            <AnimalCard />
-          </div>
-        </div>
-      )}
-      {cardAnimations[2] && (
-        <div
-          style={{
-            position: "relative",
-            top: divPosition.top + 100,
-            left: divPosition.left,
-          }}
-        >
-          <div className={styles.flyingdiv} style={{ top: 160, left: 300 }}>
-            <AnimalCard />
-          </div>
-        </div>
-      )}
-    </div>
+    </>
+
   );
 }

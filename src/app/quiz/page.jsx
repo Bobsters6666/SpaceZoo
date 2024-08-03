@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from 'react';
-import { QuizModal } from '@/components/quizModal/quizModal';
-import { QuizModal2 } from '@/components/quizModal/quizModal2';
+import React, { useState } from "react";
+import { QuizModal } from "@/components/quizModal/quizModal";
+import { QuizModal2 } from "@/components/quizModal/quizModal2";
 
 export default function App() {
     const [currentQuestion, setCurrentQuestion] = useState(1);
