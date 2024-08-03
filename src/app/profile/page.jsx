@@ -33,7 +33,7 @@ export default function page() {
         <div className="flex flex-row">
           Continents: You've explored{" "}
           <p className="color-transition ml-1"> 3 Earth continents</p>. Just 4
-          more to complete your adventure!"
+          more to complete your adventure!
         </div>
       </div>
     </div>
