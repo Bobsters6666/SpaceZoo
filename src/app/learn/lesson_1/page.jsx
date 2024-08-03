@@ -1,11 +1,10 @@
-// pages/title.js
 "use client";
 import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion"; // Import Framer Motion
-import { FaArrowRight, FaCross, FaCrosshairs, FaX } from "react-icons/fa6";
+import { FaArrowRight, FaX } from "react-icons/fa6";
 
 const TitlePage = () => {
   const [isZoomed, setIsZoomed] = useState(false); // State to control zoom

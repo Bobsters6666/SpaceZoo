@@ -1,6 +1,6 @@
 "use client";
 
-import Tooltip from "./ToolTip";
+import Tooltip from "../Tooltip/ToolTip";
 import { Avatar } from "@mui/material";
 import { GiSpellBook, GiSwordClash } from "react-icons/gi";
 import Link from "next/link";
