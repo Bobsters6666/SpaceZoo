@@ -1,80 +1,63 @@
 "use client";
 import React, { useState } from 'react';
-import './quizModal.css'
+import './quizModal.css';
 
-export function QuizModal({onNextQuestion }) {
-
+export function QuizModal({ onNextQuestion }) {
+    const [selectedOption, setSelectedOption] = useState(null);
     const [result, setResult] = useState('');
-    const [isAnswerChecked, setIsAnswerChecked] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const handleOptionClick = (isCorrect) => {
-        setResult(isCorrect ? 'Correct!' : 'Incorrect!');
-        setIsAnswerChecked(true);
-        setIsModalVisible(true);
+        setSelectedOption(isCorrect);
     };
 
-    // const handleNextButtonClick = () => {
-    //     window.location.href = '/quizModal2.jsx';
-    // };
+    const handleSubmit = () => {
+        if (selectedOption !== null) {
+            setResult(selectedOption ? 'Correct!' : 'Incorrect!');
+            setIsModalVisible(true);
+        }
+    };
 
     const handleCloseModal = () => {
         setIsModalVisible(false);
+        onNextQuestion(selectedOption);
     };
 
     return (
         <div className='quiz-container'>
             <div className='question-container'>
-                <p>Q. Which of the following is not a animal that lives in the beach?</p>
+                <p>Q. Which of the following is not an animal that lives on the beach?</p>
             </div>
 
             <div className='option-container'>
-                <div className='option'> 
-                    <img 
-                        className="image" 
-                        src='/dolphin.png' 
-                        alt='Dolphin' 
-                        onClick={() => handleOptionClick(false)}
-                    />
-                </div>
-                <div className='option'> 
-                    <img 
-                        className="image" 
-                        src='/seal.jpg' 
-                        alt='Seal'  
-                        onClick={() => handleOptionClick(false)}
-                    />
-                </div>
-                <div className='option'>
-                    <img 
-                        className="image" 
-                        src='/kiwiBird.jpg' 
-                        alt='KiwiBird' 
-                        onClick={() => handleOptionClick(true)}
-                    />
-                </div>
-                <div className='option'>
-                    <img 
-                        className="image" 
-                        src='/penguin.jpg' 
-                        alt='Penguin' 
-                        onClick={() => handleOptionClick(false)}
-                    />
-                </div>
+                {[
+                    { src: 'dolphin.png', alt: 'Dolphin', isCorrect: false },
+                    { src: 'seal.jpg', alt: 'Seal', isCorrect: false },
+                    { src: 'kiwiBird.jpg', alt: 'Kiwi Bird', isCorrect: true },
+                    { src: 'penguinQuiz.jpg', alt: 'Penguin', isCorrect: false },
+                ].map((option, index) => (
+                    <div 
+                        key={index} 
+                        className={`option ${selectedOption === index ? 'selected' : ''}`}
+                        onClick={() => handleOptionClick(index, option.isCorrect)}
+                    >
+                        <img className="image" src={option.src} alt={option.alt} />
+                        <div className='option-text'>{option.alt}</div>
+                    </div>
+                ))}
             </div>
 
-            {isAnswerChecked && (
-                <button id="next-button" onClick={onNextQuestion}>
-                    Next Question
+            {selectedOption !== null && (
+                <button id="submit-button" onClick={handleSubmit}>
+                    Submit
                 </button>
             )}
 
             {isModalVisible && (
                 <div className='modal'>
                     <div className='modal-content'>
-                        <span className='close' onClick={handleCloseModal}>&times;</span>
-                        <p>{result}</p>
-                        <div className='moda-explain-container'>
+                        <p className='modal-result'>{result}</p>
+                        <div className='modal-explain-container'>
                             <div>
                                 <img
                                     className="modal-image"
@@ -88,9 +71,12 @@ export function QuizModal({onNextQuestion }) {
                                 </p>
                             </div>
                         </div>
+                        <button id="next-button" onClick={handleCloseModal}>
+                            Next Question
+                        </button>
                     </div>
                 </div>
             )}
         </div>
-    )
+    );
 }

@@ -1,76 +1,63 @@
 "use client";
 import React, { useState } from 'react';
-import './quizModal.css'
+import './quizModal.css';
 
-export function QuizModal2({onNextQuestion }) {
-
+export function QuizModal2({ onNextQuestion }) {
+    const [selectedOption, setSelectedOption] = useState(null);
     const [result, setResult] = useState('');
-    const [isAnswerChecked, setIsAnswerChecked] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const handleOptionClick = (isCorrect) => {
-        setResult(isCorrect ? 'Correct!' : 'Incorrect!');
-        setIsAnswerChecked(true);
-        setIsModalVisible(true);
+        setSelectedOption(isCorrect);
+    };
+
+    const handleSubmit = () => {
+        if (selectedOption !== null) {
+            setResult(selectedOption ? 'Correct!' : 'Incorrect!');
+            setIsModalVisible(true);
+        }
     };
 
     const handleCloseModal = () => {
         setIsModalVisible(false);
+        onNextQuestion(selectedOption);
     };
-
+    
     return (
         <div className='quiz-container'>
             <div className='question-container'>
-                <p>Q. Which of the following is NOT typically found on a beach?</p>
+                <p>Q. Which of the following is NOT typically found on the beach?</p>
             </div>
 
             <div className='option-container'>
-                <div className='option'> 
-                    <img 
-                        className="image" 
-                        src='/shell.jpg' 
-                        alt='Shell' 
-                        onClick={() => handleOptionClick(false)}
-                    />
-                </div>
-                <div className='option'> 
-                    <img 
-                        className="image" 
-                        src='/fish.jpg' 
-                        alt='Fish'  
-                        onClick={() => handleOptionClick(true)}
-                    />
-                </div>
-                <div className='option'>
-                    <img 
-                        className="image" 
-                        src='/sand.jpg' 
-                        alt='Sand' 
-                        onClick={() => handleOptionClick(false)}
-                    />
-                </div>
-                <div className='option'>
-                    <img 
-                        className="image" 
-                        src='/rock.jpg' 
-                        alt='Rock' 
-                        onClick={() => handleOptionClick(false)}
-                    />
-                </div>
+                {[
+                    { src: '/shell.jpg', alt: 'Shell', isCorrect: false },
+                    { src: '/fish.jpg', alt: 'Fish', isCorrect: true },
+                    { src: '/sand.jpg', alt: 'Sand', isCorrect: false },
+                    { src: '/rock.jpg', alt: 'Rock', isCorrect: false },
+                ].map((option, index) => (
+                    <div 
+                        key={index} 
+                        className={`option ${selectedOption === index ? 'selected' : ''}`}
+                        onClick={() => handleOptionClick(index, option.isCorrect)}
+                    >
+                        <img className="image" src={option.src} alt={option.alt} />
+                        <div className='option-text'>{option.alt}</div>
+                    </div>
+                ))}
             </div>
 
-            {isAnswerChecked && (
-                <button id="next-button" onClick={onNextQuestion}>
-                    Result
+            {selectedOption !== null && (
+                <button id="submit-button" onClick={handleSubmit}>
+                    Submit
                 </button>
             )}
 
             {isModalVisible && (
                 <div className='modal'>
                     <div className='modal-content'>
-                        <span className='close' onClick={handleCloseModal}>&times;</span>
-                        <p>{result}</p>
-                        <div className='moda-explain-container'>
+                        <p className='modal-result'>{result}</p>
+                        <div className='modal-explain-container'>
                             <div>
                                 <img
                                     className="modal-image"
@@ -83,11 +70,13 @@ export function QuizModal2({onNextQuestion }) {
                                     Fish live in the ocean, not on the beach. You can find rocks, sand, and shells on a beach, but not fish.
                                 </p>
                             </div>
-
                         </div>
+                        <button id="next-button" onClick={handleCloseModal}>
+                            Result
+                        </button>
                     </div>
                 </div>
             )}
         </div>
-    )
+    );
 }
