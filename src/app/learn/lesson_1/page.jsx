@@ -70,7 +70,7 @@ const TitlePage = () => {
           )}
           {index == 2 && (
             <button
-              className="position absolute right-0 bottom-[-70px] text-base text-white px-6 py-4 bg-[#369212] rounded-full font-bold flex gap-2 items-center hover:bg-[#2e7f4f] transition-all ease-in-out hover:shadow-lg"
+              className="position absolute right-0 bottom-[-70px] text-base text-white px-6 py-4 bg-[#414dda] rounded-full font-bold flex gap-2 items-center hover:bg-opacity-80 transition-all ease-in-out hover:shadow-lg"
               onClick={() => router.push("/quiz")}
             >
               Take quiz <FaArrowRight size={16} />
