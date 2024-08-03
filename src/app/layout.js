@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${quicksand.className} overflow-hidden`}>
         <div className="flex flex-col justify-start ">
-          {/* <NavBar /> */}
+          <NavBar />
           {children}
         </div>
       </body>
