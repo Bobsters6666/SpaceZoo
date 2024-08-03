@@ -8,14 +8,14 @@ import NavBar from "../components/NavBar";
 export default function Home() {
   return (
     <main className="w-screen h-screen overflow-hidden">
-      {/* <Image
+       {/* <Image
         src="/tui.jpg"
         alt="Next.js Logo"
         layout="fill"
         priority
         className="w-screen h-screen"
       />
-      <AnimalCard></AnimalCard>
+      <AnimalCard></AnimalCard> */}
     </main>
-  );
-}
+      )
+};
