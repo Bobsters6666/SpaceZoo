@@ -61,8 +61,38 @@ const TitlePage = () => {
               </strong>
             </p>
           ) : null}
-          {index === 1 ? <TooltipText name="test" description="yuh" /> : null}
-          {index === 2 ? <p>Third page</p> : null}
+          {index === 1 ? (
+            <p className={styles.lessonText}>
+              A{" "}
+              <strong
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                beach
+              </strong>{" "}
+              is a part of Earth land that is made of very small things.{" "}
+              <br></br>
+              <br></br> These things include rock, sand and gravel. You can also
+              find shells on the beach, which can come from many{" "}
+              <strong
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                marine animals.
+              </strong>
+            </p>
+          ) : null}
+          {index === 2 ? (
+            <p className={styles.lessonText}>
+              In <strong>New Zealand</strong> the beach are home to tonnes of
+              species - including:
+              <ul>
+                <li>The little blue penguin</li>
+                <li>Oyster catchers</li>
+                <li>Tui</li>
+              </ul>
+            </p>
+          ) : null}
           {index != 2 && (
             <div className={styles.arrowRightContainer} onClick={handleNext}>
               <FaArrowRight color="white" size={24} />
