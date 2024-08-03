@@ -115,6 +115,18 @@
   background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  font-size: 1.5rem;
+}
+
+.turn_counter {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
 }
 
 .winner_message {

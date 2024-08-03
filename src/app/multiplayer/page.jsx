@@ -15,6 +15,9 @@ export default function Combat() {
 
   const [playerTurn, setPlayerTurn] = useState(true);
   const [isCrashing, setIsCrashing] = useState(false);
+
+  const [turn, setTurn] = useState(1);
+
   const [winnerMessage, setWinnerMessage] = useState(null);
   const [gameOverMessage, setGameOverMessage] = useState(null);
   const [gameOver, setGameOver] = useState(false);
@@ -78,18 +81,19 @@ export default function Combat() {
     return null;
   };
   
-  const updateCardsAfterCrash = (winner, playerCards, opponentCards, selectedCard, selectedOpponentCard) => {
-    if (winner === 'player') {
-      return {
-        playerCards,
-        opponentCards: opponentCards.map((card, index) => index === selectedOpponentCard ? null : card)
-      };
-    } else {
-      return {
-        playerCards: playerCards.map((card, index) => index === selectedCard ? null : card),
-        opponentCards
-      };
-    }
+  const updateCardsAfterCrash = (winner, playerCards, opponentCards, selectedCardIndex, selectedOpponentCardIndex) => {
+    const updatedPlayerCards = playerCards.filter((_, index) => index !== selectedCardIndex);
+    const updatedOpponentCards = opponentCards.filter((_, index) => index !== selectedOpponentCardIndex);
+  
+    return winner === 'player'
+      ? {
+          playerCards: playerCards,
+          opponentCards: updatedOpponentCards
+        }
+      : {
+          playerCards: updatedPlayerCards,
+          opponentCards: opponentCards
+        };
   };
   
   const handlePass = () => {
@@ -135,6 +139,7 @@ export default function Combat() {
                 setTimeout(() => {
                 setWinnerMessage(null);
                 }, 600);
+                setTurn(turn + 1);
             }
   
             
@@ -200,7 +205,7 @@ export default function Combat() {
       >
         Exit
       </button></div></div>}
-
+        <div className={styles.turn_counter}>Turn: {turn}</div>
     </div>
   );
 }
