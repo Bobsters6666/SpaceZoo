@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import AnimalCard from '../../components/AnimalCard';
 import BlankAnimalCard from '../../components/BlankAnimalCard';
 import styles from './multiplayer.module.css';
+import { Avatar } from '@mui/material';
 
 export default function Combat() {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -151,6 +152,8 @@ export default function Combat() {
 
   return (
     <div className={styles.combat}>
+    <Avatar src="/avatar.jpg" sx={{ width: 80, height: 80 }} className={styles.player_avatar}/>
+    <p className={styles.player_name}>JavaSkunk</p>
       <div className={styles.opponent_hand}>
   {opponentCards.slice(0, visibleOpponentCards).map((card, index) => (
     <div
@@ -177,7 +180,7 @@ export default function Combat() {
         <div onClick={handleCardDeselect} className={styles.overlay}></div>
       )}
       {playerTurn && selectedCard !== null && <button className={styles.pass_button} onClick={handlePass}>Pass to Opponent</button>}
-      {!playerTurn ? <div className={styles.turn}>Opponent's Turn</div> : <div className={styles.turn} >Your Turn</div>}
+      {!playerTurn ? <div className={styles.turn}>Opponent's Turn</div> : !gameOver && !isCrashing && <div className={styles.turn} >Your Turn</div>}
       {winnerMessage && (
   <div 
     style={{
