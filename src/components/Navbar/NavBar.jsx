@@ -8,21 +8,21 @@ import Link from "next/link";
 const NavBar = () => {
   return (
     <div className="z-50 absolute flex flex-row justify-end items-center gap-[1rem] pt-[1rem] pb-[1rem] pr-[3rem] bg-transparent min-w-full ">
-      <Link href={"/"}>
+      <Link href={"/"} shallow>
         <Tooltip label="Learn">
           <Avatar sx={{ bgcolor: "#f5f4f0", width: 45, height: 45 }}>
             <GiSpellBook size="25" className="text-[#dfb644]" />
           </Avatar>
         </Tooltip>
       </Link>
-      <Link href={"/duel"}>
+      <Link href={"/duel"} shallow>
         <Tooltip label="Duel">
           <Avatar sx={{ bgcolor: "#f5f4f0", width: 45, height: 45 }}>
             <GiSwordClash size="25" className="text-[#dfb644]" />
           </Avatar>
         </Tooltip>
       </Link>
-      <Link href="/profile">
+      <Link href="/profile" shallow>
         <Tooltip label="Profile">
           <Avatar src="/avatar.jpg" sx={{ width: 45, height: 45 }} />
         </Tooltip>

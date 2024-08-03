@@ -25,7 +25,7 @@ export default function page() {
       image: "/NZBeach.jpg",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      link: "/nz/lesson1",
+      link: "/learn/Oceania/NZ/lesson_1",
     },
     {
       title: "Culture",
@@ -99,7 +99,7 @@ export default function page() {
               </Grid>
             </Grid>
             <Box mt={2} display="flex" justifyContent="flex-end">
-              <Link href={currentModalData.link}>
+              <Link href={currentModalData.link} shallow>
                 <Button variant="contained">Learn</Button>
               </Link>
             </Box>

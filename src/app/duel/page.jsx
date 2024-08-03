@@ -61,7 +61,7 @@ export default function Page() {
             </p>
             <div className="flex gap-12">
               <button onClick={() => setShowModal(false)}>Decline</button>
-              <Link href="/multiplayer">
+              <Link href="/multiplayer" shallow>
                 <button
                   onClick={() => setShowModal(false)}
                   className="bg-blue-600 hover:opacity-75 text-white font-bold py-2 px-4 rounded"
