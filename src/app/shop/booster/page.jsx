@@ -29,7 +29,7 @@ export default function page() {
     }
   }, [isAnimating]);
 
-  return <div>{showBooster && 
+  return <div className={styles.page}>{showBooster && 
   <div ref={boosterRef} className={styles.booster}
   onClick={handleClick} style={{ animationPlayState: isAnimating ? 'running' : 'paused', transform: isRotated ? 'rotateY(90deg)' : 'none' }}>asdf</div>}
   {showFlyingDivs && (
