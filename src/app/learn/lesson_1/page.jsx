@@ -2,8 +2,8 @@
 "use client";
 import React from "react";
 import styles from "./lesson_1.module.css"; // Import the CSS module for styling
-import TooltipModal from "@/components/TooltipModal";
-import TooltipText from "@/components/TooltipText";
+import TooltipModal from "../../../components/TooltipModal"
+import TooltipText from "../../../components/TooltipText";
 import { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";

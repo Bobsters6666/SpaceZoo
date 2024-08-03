@@ -1,8 +1,7 @@
 "use client";
-
 import React from 'react';
 import './AnimalCard.css';
-import animals from '@/data/animals'; // Adjust import path as necessary
+import animals from '../data/animals'; // Adjust import path as necessary
 
 const getRandomAnimal = () => {
   const randomIndex = Math.floor(Math.random() * animals.length);
