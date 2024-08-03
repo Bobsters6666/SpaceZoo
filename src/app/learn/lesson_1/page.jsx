@@ -46,6 +46,9 @@ const TitlePage = () => {
           {
             index === 1 ? <p>second page</p> : null
           }
+          {
+            index === 2 ? <p>Third page</p> : null
+          }
           { 
             index != 2 && <div className={styles.arrowRightContainer} onClick={handleNext} ><FaArrowRight color='white' size={24}
             />
