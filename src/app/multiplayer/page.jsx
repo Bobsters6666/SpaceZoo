@@ -154,6 +154,8 @@ export default function Combat() {
     <div className={styles.combat}>
     <Avatar src="/avatar.jpg" sx={{ width: 80, height: 80 }} className={styles.player_avatar}/>
     <p className={styles.player_name}>JavaSkunk</p>
+    <Avatar src="/opponentavatar.jpg" sx={{ width: 80, height: 80 }} className={styles.opponent_avatar}/>
+    <p className={styles.opponent_name}>DEVSpacers</p>
       <div className={styles.opponent_hand}>
   {opponentCards.slice(0, visibleOpponentCards).map((card, index) => (
     <div
