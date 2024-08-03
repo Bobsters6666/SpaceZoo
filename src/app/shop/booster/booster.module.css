@@ -1,21 +1,20 @@
 .booster {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 0 auto;
-  height: 200px;
-  padding-top: 20px;
-  width: 200px;
-  animation: moveLeftRight 2s ease-in-out infinite;
-  transform-style: preserve-3d;
-  background-image: url("/crate.jpg");
-  background-size: cover; /* Adjust the image to cover the entire div */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 auto;
+    height: 200px;
+    padding-top: 20px;
+    width: 200px;
+    animation: moveLeftRight 2s ease-in-out infinite;
+    transform-style: preserve-3d;
+    background-image: url('/kiwicreaturecrate.jpg');
+    background-size: cover; /* Adjust the image to cover the entire div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
 }
 
 @keyframes moveLeftRight {
@@ -84,6 +83,21 @@
   padding-left: 30px;
   animation: flyIn 0.5s ease-out forwards;
   color: black;
+}
+
+.booster.clicked {
+  filter: brightness(1.5); /* Increase brightness on click */
+}
+
+.addButton {
+  display: fixed;
+  position: fixed;
+  top: 80%;
+  left: 45%;
+  background-color: #414dda;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
 }
 
 .page {

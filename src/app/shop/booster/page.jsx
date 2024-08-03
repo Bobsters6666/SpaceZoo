@@ -64,6 +64,7 @@ export default function Page() {
   };
 
   return (
+
     <>
       {loading ? (
         <div>Loading...</div>
@@ -106,5 +107,6 @@ export default function Page() {
         </div>
       )}
     </>
+
   );
 }
