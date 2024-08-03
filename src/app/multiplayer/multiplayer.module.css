@@ -48,6 +48,15 @@
   z-index: 1000; /* Ensure it appears above other elements */
 }
 
+.card {
+  transition: transform 0.3s ease-in-out;
+  /* Other styles for the card */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
 .opponent_hand {
   display: flex;
   justify-content: center;

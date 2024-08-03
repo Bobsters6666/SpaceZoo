@@ -162,7 +162,16 @@ export default function Combat() {
   >
     {winnerMessage}
   </div>)}
-  {gameOverMessage && <div className={styles.game_over_message}>{gameOverMessage}</div>}
+  {gameOverMessage && <div className={styles.game_over_message}>{gameOverMessage}<div style={{ marginTop: '20px' }}><button 
+        onClick={() => {/* Add logic to exit game */}}
+        style={{
+          fontSize: '18px',
+          padding: '10px 20px',
+          cursor: 'pointer'
+        }}
+      >
+        Exit
+      </button></div></div>}
 
     </div>
   );
