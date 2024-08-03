@@ -60,6 +60,7 @@
 }
 
 .flyingdiv {
+  transition: z-index 0.2s ease; 
   width: 100px;
   height: 50px;
   display: flex;

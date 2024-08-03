@@ -7,7 +7,7 @@ const getRandomAnimal = () => {
   return animals[randomIndex];
 };
 
-const AnimalCard = () => {
+const AnimalCard = React.memo(() => {
   const animal = getRandomAnimal();
 
   return (
@@ -33,7 +33,7 @@ const AnimalCard = () => {
       </li>
     </ul>
   );
-};
+});
 
 export default AnimalCard;
 //<p className="back-stats">Attack: {animal.stats.attack}</p>
