@@ -2,6 +2,7 @@ import ProfileAnimalCard from "../../../components/profile/ProfileAnimalCard";
 import profileAnimals from "../../../data/profileAnimals";
 import "../../../components/profile/ProfileAnimalCard.css";
 import { DiDigitalOcean } from "react-icons/di";
+import styles from "./page.module.css";
 
 export default function page() {
   return (
@@ -15,7 +16,7 @@ export default function page() {
         style={{ overflowX: "hidden" }}
       >
         {profileAnimals.map((animal) => (
-          <ProfileAnimalCard animal={animal} key={animal.name} />
+          <ProfileAnimalCard animal={animal} key={animal.name} locked={animal.locked}/>
         ))}
       </div>
     </div>

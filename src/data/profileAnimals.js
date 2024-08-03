@@ -96,6 +96,7 @@ const profileAnimals = [
         health: 90,
         attack: 15,
       },
+      locked: true
     },
     {
       name: "New Zealand Falcon",
@@ -110,6 +111,7 @@ const profileAnimals = [
         health: 60,
         attack: 70,
       },
+      locked: true
     },
     {
       name: "Hector's Dolphin",
@@ -124,6 +126,7 @@ const profileAnimals = [
         health: 75,
         attack: 40,
       },
+      locked: true
     },
 ]
     
