@@ -1,3 +1,29 @@
+@keyframes player_crash {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-500px);
+  }
+}
+
+@keyframes opponent_crash {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(500px);
+  }
+}
+
+.card_animation_crash_player {
+  animation: player_crash 2s forwards;
+}
+
+.card_animation_crash_opponent {
+  animation: opponent_crash 2s forwards;
+}
+
 .player_hand {
   display: flex;
   justify-content: center;
@@ -20,4 +46,94 @@
   transform: translate(-50%, -80%);
   transition: all 0.5s ease-in-out; /* Smooth transition */
   z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.opponent_hand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: fixed; /* Fixed position to keep it at the top */
+  top: -150px; /* Distance from the top of the page */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center alignment correction */
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+}
+
+.opponent_selected_card {
+  position: fixed;
+  top: 30%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, 40%);
+  transition: all 0.5s ease-in-out; /* Smooth transition */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Pass button will be in bottom right corner */
+.pass_button {
+  position: fixed; /* Fixed position to keep it at the bottom right */
+  bottom: 20px; /* Distance from the bottom of the page */
+  right: 20px; /* Distance from the right of the page */
+  padding: 10px 20px; /* Padding for button */
+  background-color: #aa0000; 
+  color: white; 
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor changes to pointer on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  font-size: 1.5rem;
+}
+
+.pass_button:hover {
+  background-color: #ff0000; /* Lighter red on hover */
+}
+
+/* Turn text will be in the bottom left corner */
+.turn {
+  position: fixed; /* Fixed position to keep it at the bottom left */
+  bottom: 20px; /* Distance from the bottom of the page */
+  left: 20px; /* Distance from the left of the page */
+  padding: 10px; /* Padding for text */
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+}
+
+.winner_message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backgroundColor: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    borderRadius: 10px;
+    fontSize: 24px;
+    zIndex: 1000;
+}
+
+.combat {
+    background-image: url('/battlebackground.jpg');
+    background-size: cover; /* Adjust the image to cover the entire div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.game_over_message {
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 2000;
+  text-align: center;
+  font-size: 24px;
 }
