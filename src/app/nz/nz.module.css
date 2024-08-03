@@ -27,10 +27,16 @@
 
 .finish {
   width: 50px;
+  position: absolute;
+  top: 13%;
+  right: 19%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 768px) {
   .path {
     width: 70vh;
+    top: 60%;
+    left: 50%;
   }
 }
