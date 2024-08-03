@@ -1,5 +1,5 @@
 import Image from "next/image";
-import AnimalCard from "@/components/AnimalCard";
+import AnimalCard from "../components/AnimalCard";
 
 export default function Home() {
   return (
@@ -11,8 +11,7 @@ export default function Home() {
         priority
         className="w-screen h-screen"
       />
-      <AnimalCard></AnimalCard>
-      <AnimalCard></AnimalCard>
+      <AnimalCard />
     </main>
   );
 }
