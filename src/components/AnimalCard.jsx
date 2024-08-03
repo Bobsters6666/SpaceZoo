@@ -11,23 +11,23 @@ const AnimalCard = React.memo(() => {
   const getBorderStyle = (rarity) => {
     switch (rarity) {
       case "Common":
-        return "2px solid #cccccc"; 
+        return "2px solid #cccccc";
       case "Uncommon":
-        return "2px solid #00ff00"; 
+        return "2px solid #00ff00";
       case "Rare":
         return "2px solid #0000ff";
       case "Epic":
-        return "2px solid #800080"; 
+        return "2px solid #800080";
       case "Legendary":
-        return "2px solid #f80000"; 
+        return "2px solid #f80000";
     }
   };
 
   const animal = getRandomAnimal();
 
   return (
-    <ul className="card-wrapper">
-      <li className="card">
+    <ul className="card-wrapper w-[200px]">
+      <li className="card w-[200px]">
         <div className="card-inner">
           <div className="card-front">
             <img src={animal.photoUrl} alt={`${animal.name} Image`} />
