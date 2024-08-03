@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import AnimalCard from '../../components/AnimalCard';
-import BlankAnimalCard from '../../components/BlankAnimalCard';
+import AnimalCard from '../../components/AnimalCard/AnimalCard';
+import BlankAnimalCard from '../../components/BlankAnimalCard/BlankAnimalCard';
 import styles from './multiplayer.module.css';
 import { Avatar } from '@mui/material';
 import { useCombatGame } from './useCombatHook';

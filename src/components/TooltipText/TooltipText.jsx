@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TooltipText.module.css'; 
 import { useState } from 'react';
-import TooltipModal from '../components/TooltipModal';
+import TooltipModal from '../TooltipModal/TooltipModal';
 
 const TooltipText = ({ name, description }) => {
 
