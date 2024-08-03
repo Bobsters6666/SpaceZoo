@@ -46,6 +46,22 @@
     background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
 }
 
+.opponent_avatar {
+    position: fixed; /* Fixed position to keep it at the bottom */
+    top: 160px; /* Distance from the bottom of the page */
+    left: 48%; /* Center horizontally */
+    height: 100px; /* Avatar height */
+    width: 100px; /* Avatar width */
+}
+
+.opponent_name {
+    position: fixed; /* Fixed position to keep it at the bottom */
+    top: 245px; /* Distance from the bottom of the page */
+    left: 47%; /* Center horizontally */
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+}
+
 .player_hand {
   display: flex;
   justify-content: center;
