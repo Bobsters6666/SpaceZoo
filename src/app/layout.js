@@ -15,10 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={quicksand.className}>
         <div className="flex flex-col justify-start">
-        <NavBar />
-        {children}
+          <NavBar />
+          {children}
         </div>
       </body>
     </html>
