@@ -29,7 +29,7 @@ const AnimalCard = () => {
               
             />
             <p className='back-text'>{animal.funFact}</p>
-            <p className="back-stats">{animal.stats}</p>
+            
             <p className='back-rarity'>{animal.rarity}</p>
             
           </div>
@@ -40,3 +40,5 @@ const AnimalCard = () => {
 };
 
 export default AnimalCard;
+//<p className="back-stats">Attack: {animal.stats.attack}</p>
+//<p className="back-stats">Health: {animal.stats.health}</p>
