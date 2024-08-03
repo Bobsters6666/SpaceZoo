@@ -5,7 +5,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
 import Link from "next/link";
-import SpaceBackground from "../../components/SpaceBackground";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
