@@ -25,7 +25,7 @@ export default function page() {
       image: "/NZBeach.jpg",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      link: "/learn/lesson_1",
+      link: "/learn/Oceania/NZ/lesson_1",
     },
     {
       title: "Culture",
