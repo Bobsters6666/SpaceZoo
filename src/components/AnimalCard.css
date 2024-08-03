@@ -1,0 +1,10 @@
+.AnimalCard {
+    width: 200px;
+    height:300px;
+    align-content: center;
+    flex:auto;
+}
+
+.Button{
+    color: black; 
+} 
