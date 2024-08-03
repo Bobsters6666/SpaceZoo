@@ -13,13 +13,12 @@ export default function page() {
         className="w-screen h-screen -z-10 absolute"
       />
       <img src="/path.png" alt="path" className={styles.path} />
-      <img src="/pin.png" alt="start"  className={styles.start}/>
-      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle}  />
-      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle} />
-      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle}/>
-      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle}/>
-      <img src="/flag.png" alt="finish"  className={styles.finish}/>
-
+      <img src="/pin.png" alt="start" className={styles.start} />
+      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle1} />
+      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle2} />
+      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle3} />
+      <img src="/shuttle.png" alt="shuttle" className={styles.shuttle4} />
+      <img src="/flag.png" alt="finish" className={styles.finish} />
     </div>
   );
 }
