@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimalCard from '../../components/AnimalCard';
 import BlankAnimalCard from '../../components/BlankAnimalCard';
 import styles from './multiplayer.module.css';
@@ -10,6 +10,9 @@ export default function Combat() {
   const [playerCards, setPlayerCards] = useState([...Array(4)].map(() => <AnimalCard />));
   const [opponentCards, setOpponentCards] = useState([...Array(4)].map(() => <BlankAnimalCard />));
   const [actualOpponentCards, setActualOpponentCards] = useState([...Array(4)].map(() => <AnimalCard />));
+  const [visiblePlayerCards, setVisiblePlayerCards] = useState(0);
+  const [visibleOpponentCards, setVisibleOpponentCards] = useState(0);
+
   const [playerTurn, setPlayerTurn] = useState(true);
   const [isCrashing, setIsCrashing] = useState(false);
   const [winnerMessage, setWinnerMessage] = useState(null);
@@ -24,6 +27,29 @@ export default function Combat() {
   const handleCardDeselect = () => {
     setSelectedCard(null);
   };
+
+  useEffect(() => {
+    dealCards();
+  }, []);
+
+  const dealCards = () => {
+    let playerCardCount = 0;
+    let opponentCardCount = 0;
+    
+    const dealInterval = setInterval(() => {
+      if (playerCardCount < 4) {
+        setVisiblePlayerCards(playerCardCount + 1);
+        playerCardCount++;
+      }
+      if (opponentCardCount < 4) {
+        setVisibleOpponentCards(opponentCardCount + 1);
+        opponentCardCount++;
+      }
+      if (playerCardCount === 4 && opponentCardCount === 4) {
+        clearInterval(dealInterval);
+      }
+    }, 500); // Adjust this value to change the speed of dealing
+  }
 
   const selectOpponentCard = (opponentCards) => {
     const randomIndex = Math.floor(Math.random() * opponentCards.length);
@@ -121,26 +147,27 @@ export default function Combat() {
   return (
     <div className={styles.combat}>
       <div className={styles.opponent_hand}>
-        {opponentCards.map((card, index) => (
-          <div
-            key={index}
-            className={selectedOpponentCard === index ? `${styles.opponent_selected_card} ${isCrashing ? styles.card_animation_crash_opponent : ''}` : ''}
-          >
-            {card}
-          </div>
-        ))}
-      </div>
-      <div className={styles.player_hand}>
-        {playerCards.map((card, index) => (
-          <div
-            key={index}
-            className={selectedCard === index ? `${styles.selected_card} ${isCrashing ? styles.card_animation_crash_player : ''}` : ''}
-            onClick={() => handleCardClick(index)}
-          >
-            {card}
-          </div>
-        ))}
-      </div>
+  {opponentCards.slice(0, visibleOpponentCards).map((card, index) => (
+    <div
+      key={index}
+      className={selectedOpponentCard === index ? `${styles.opponent_selected_card} ${isCrashing ? styles.card_animation_crash_opponent : ''}` : ''}
+    >
+      {card}
+    </div>
+  ))}
+</div>
+
+<div className={styles.player_hand}>
+  {playerCards.slice(0, visiblePlayerCards).map((card, index) => (
+    <div
+      key={index}
+      className={selectedCard === index ? `${styles.selected_card} ${isCrashing ? styles.card_animation_crash_player : ''}` : ''}
+      onClick={() => handleCardClick(index)}
+    >
+      {card}
+    </div>
+  ))}
+</div>
       {selectedCard !== null && (
         <div onClick={handleCardDeselect} className={styles.overlay}></div>
       )}

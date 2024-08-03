@@ -1,18 +1,24 @@
 @keyframes player_crash {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(90deg);
+  }
+  20% {
+    transform: translateY(200px);
   }
   100% {
-    transform: translateY(-500px);
+    transform: translateY(-700px) rotate(0deg);
   }
 }
 
 @keyframes opponent_crash {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(90deg);
+  }
+  20% {
+    transform: translateY(-200px);
   }
   100% {
-    transform: translateY(500px);
+    transform: translateY(700px) rotate(0deg);
   }
 }
 
