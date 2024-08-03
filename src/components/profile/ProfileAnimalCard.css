@@ -11,6 +11,7 @@
     overflow: hidden;
   }
   
+
   .card::before {
     content: "";
     position: absolute;
@@ -66,3 +67,12 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
   
+  .lockIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black; /* Adjust the color as needed */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+  padding: 10px; /* Adjust padding as needed */
+}
