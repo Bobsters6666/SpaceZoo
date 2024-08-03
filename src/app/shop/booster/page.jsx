@@ -36,7 +36,7 @@ export default function Page() {
       setTimeout(() => {
         clearInterval(interval);
       }, 3000);
-    }, 500);
+    }, 100);
   };
 
   const boosterRef = useRef(null);
@@ -68,7 +68,6 @@ export default function Page() {
           onClick={handleClick}
           style={{
             animationPlayState: isAnimating ? "running" : "paused",
-            transform: isRotated ? "rotateY(90deg)" : "none",
           }}
         ></div>
       )}

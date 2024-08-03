@@ -9,6 +9,7 @@ export default function Combat() {
   const [selectedOpponentCard, setSelectedOpponentCard] = useState(null);
   const [playerCards, setPlayerCards] = useState([...Array(4)].map(() => <AnimalCard />));
   const [opponentCards, setOpponentCards] = useState([...Array(4)].map(() => <BlankAnimalCard />));
+  const [actualOpponentCards, setActualOpponentCards] = useState([...Array(4)].map(() => <AnimalCard />));
   const [playerTurn, setPlayerTurn] = useState(true);
   const [isCrashing, setIsCrashing] = useState(false);
   const [winnerMessage, setWinnerMessage] = useState(null);
@@ -31,7 +32,7 @@ export default function Combat() {
   
   const updateOpponentCards = (prevOpponentCards, selectedOpponentCard) => {
     const newOpponentCards = [...prevOpponentCards];
-    newOpponentCards[selectedOpponentCard] = <AnimalCard />;
+    newOpponentCards[selectedOpponentCard] = actualOpponentCards[selectedOpponentCard];
     return newOpponentCards;
   };
   
