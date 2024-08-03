@@ -1,12 +1,7 @@
 "use client";
-import { useRouter } from "next/navigation";
-import Tooltip from "./ToolTip";
-import { FaBookAtlas } from "react-icons/fa6";
-import { RiUser5Line } from "react-icons/ri";
-import { useEffect } from "react";
-import { Avatar } from "@mui/material";
-import { MdOutlineBook } from "react-icons/md";
 
+import Tooltip from "./ToolTip";
+import { Avatar } from "@mui/material";
 import { GiSpellBook, GiSwordClash } from "react-icons/gi";
 import Link from "next/link";
 
