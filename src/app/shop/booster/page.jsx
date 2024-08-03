@@ -13,6 +13,7 @@ export default function Page() {
   const [cardAnimations, setCardAnimations] = useState([false, false, false]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [boosterDone, setBoosterDone] = useState(false);
 
   const handleClick = () => {
     setIsAnimating(!isAnimating);
@@ -36,6 +37,7 @@ export default function Page() {
       // stop the interval after 3 seconds
       setTimeout(() => {
         clearInterval(interval);
+        setBoosterDone(true);
       }, 3000);
     }, 500);
   };

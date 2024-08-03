@@ -13,6 +13,8 @@ export default function Combat() {
   const [actualOpponentCards, setActualOpponentCards] = useState([...Array(4)].map(() => <AnimalCard />));
   const [visiblePlayerCards, setVisiblePlayerCards] = useState(0);
   const [visibleOpponentCards, setVisibleOpponentCards] = useState(0);
+  const [showStartScreen, setShowStartScreen] = useState(true);
+  const [hoverPlayerHand, setHoverPlayerHand] = useState(false);
 
   const [playerTurn, setPlayerTurn] = useState(true);
   const [isCrashing, setIsCrashing] = useState(false);
@@ -32,9 +34,13 @@ export default function Combat() {
     setSelectedCard(null);
   };
 
-  useEffect(() => {
-    dealCards();
-  }, []);
+  const handleHandHover = () => {
+    setHoverPlayerHand(true);
+    };
+
+    const handleHandLeave = () => {
+    setHoverPlayerHand(false);
+    };
 
   const dealCards = () => {
     let playerCardCount = 0;
@@ -96,6 +102,11 @@ export default function Combat() {
           opponentCards: opponentCards
         };
   };
+
+  const startGame = () => {
+    setShowStartScreen(false);
+    dealCards();
+  };
   
   const handlePass = () => {
     setPlayerTurn(false);
@@ -139,20 +150,21 @@ export default function Combat() {
                 setPlayerTurn(true);
                 setTimeout(() => {
                 setWinnerMessage(null);
-                }, 600);
+                }, 600); // Duration of the winner message
                 setTurn(turn + 1);
             }
   
             
           }, 1000); // Duration of the crash animation
-        }, 1000);
+        }, 2000); // Delay before the crash animation
       }
-    }, 1000);
+    }, 1000);// Delay before the opponent's turn
   };
 
   return (
     <div className={styles.combat}>
-    <Avatar src="/avatar.jpg" sx={{ width: 80, height: 80 }} className={styles.player_avatar}/>
+    {showStartScreen && <div className={styles.startScreen}><h1>JavaSkunk vs DEVSpacers</h1><button onClick={startGame}>Start Game</button></div>}
+    {!showStartScreen && <><Avatar src="/avatar.jpg" sx={{ width: 80, height: 80 }} className={styles.player_avatar}/>
     <p className={styles.player_name}>JavaSkunk</p>
     <Avatar src="/opponentavatar.jpg" sx={{ width: 80, height: 80 }} className={styles.opponent_avatar}/>
     <p className={styles.opponent_name}>DEVSpacers</p>
@@ -167,7 +179,11 @@ export default function Combat() {
   ))}
 </div>
 
-<div className={styles.player_hand}>
+<div 
+  className={`${styles.player_hand} ${hoverPlayerHand ? styles.hovered_hand : ''}`} 
+  onMouseEnter={handleHandHover} 
+  onMouseLeave={handleHandLeave}
+>
   {playerCards.slice(0, visiblePlayerCards).map((card, index) => (
     <div
       key={index}
@@ -211,6 +227,7 @@ export default function Combat() {
         Exit
       </button></div></div>}
         <div className={styles.turn_counter}>Turn: {turn}</div>
+    </>}
     </div>
   );
 }
