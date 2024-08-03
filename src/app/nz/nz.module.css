@@ -24,21 +24,21 @@
 .shuttle1 {
   width: 50px;
   position: absolute;
-  top: 60%;
+  top: 59%;
   left: 25%;
   transform: translate(-50%, -50%);
 }
 .shuttle2 {
   width: 50px;
   position: absolute;
-  top: 75%;
+  top: 76%;
   left: 44%;
   transform: translate(-50%, -50%);
 }
 .shuttle3 {
   width: 50px;
   position: absolute;
-  top: 45%;
+  top: 44%;
   left: 57%;
   transform: translate(-50%, -50%);
 }
@@ -64,4 +64,20 @@
     top: 60%;
     left: 50%;
   }
+}
+.shuttle1:hover {
+  transform: rotate(-50deg);
+  transition: transform 0.4s ease-in-out;
+}
+.shuttle2:hover {
+  transform: rotate(-50deg);
+  transition: transform 0.4s ease-in-out;
+}
+.shuttle3:hover {
+  transform: rotate(-50deg);
+  transition: transform 0.4s ease-in-out;
+}
+.shuttle4:hover {
+  transform: rotate(-50deg);
+  transition: transform 0.4s ease-in-out;
 }
