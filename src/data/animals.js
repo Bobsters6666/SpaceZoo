@@ -1,8 +1,8 @@
-const newZealandAnimals = [
+const animals = [
   {
     name: "Kiwi",
     photoUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/d/d8/TeTuatahianui.jpg",
+      "https://c4.wallpaperflare.com/wallpaper/102/652/1023/animal-kiwi-bird-wallpaper-preview.jpg",
     description:
       "The kiwi is a flightless bird native to New Zealand, known for its long beak and nocturnal habits.",
     funFact:
@@ -16,7 +16,7 @@ const newZealandAnimals = [
   {
     name: "Kea",
     photoUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/8/8b/Kea_in_Glenorchy.jpg",
+      "https://wallpaper.forfun.com/fetch/43/439412f7e3cb976f7a29362fad06838f.jpeg",
     description:
       "The kea is a large parrot species native to the South Island of New Zealand, known for its intelligence and curiosity.",
     funFact: "Keas are known to use tools and solve complex puzzles.",
@@ -205,3 +205,6 @@ const newZealandAnimals = [
     },
   },
 ];
+
+
+export default animals;
