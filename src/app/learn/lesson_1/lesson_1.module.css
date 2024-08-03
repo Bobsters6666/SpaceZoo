@@ -66,12 +66,13 @@
   right: 0;
   bottom: -70px;
   padding: 12px 35px;
-  background-color: #349256;
+  background-color: #414dda;
   border-radius: 16px;
 }
 
 .arrowRightContainer:hover {
-  background-color: #2e7f4f;
+  opacity: 0.8;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -80,12 +81,13 @@
   left: 0;
   bottom: -70px;
   padding: 12px 35px;
-  background-color: #349256;
+  background-color: #414dda;
   border-radius: 16px;
 }
 
 .arrowLeftContainer:hover {
-  background-color: #2e7f4f;
+  opacity: 0.8;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
 }
 
