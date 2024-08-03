@@ -6,29 +6,31 @@
 }
 
 .path {
-  width: 55vw;
+  width: 60vw;
   position: absolute;
-  top: 55%;
-  left: 55%;
+  top: 50%;
+  left: 47%;
   transform: translate(-50%, -50%);
 }
 
 .start {
   width: 50px;
+  position: absolute;
+  top: 85%;
+  left: 15%;
+  transform: translate(-50%, -50%);
 }
 
 .shuttle {
   width: 50px;
 }
-@media (max-width: 768px) {
-  /* Adjust styles for smaller screens */
-  .path {
-    height: 50%;
-    top: 5%;
-    right: 5%;
-  }
-}
 
 .finish {
   width: 50px;
+}
+
+@media (max-width: 768px) {
+  .path {
+    width: 70vh;
+  }
 }
