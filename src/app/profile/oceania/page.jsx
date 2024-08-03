@@ -12,7 +12,7 @@ export default function page() {
         <DiDigitalOcean size="40" />
       </div>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full gap-[1.5rem] overflow-auto max-h-[650px]"
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full gap-[1.5rem] overflow-auto max-h-[450px]"
         style={{ overflowX: "hidden" }}
       >
         {profileAnimals.map((animal) => (
