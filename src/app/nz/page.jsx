@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./nz.module.css";
-import { Button, Dialog, Typography, Grid } from "@mui/material";
+import { Button, Dialog, Typography, Grid, Box } from "@mui/material";
 
 export default function page() {
   const [open, setOpen] = useState(false);
@@ -81,15 +81,16 @@ export default function page() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Button onClick={handleClose}>X</Button>
         {currentModalData && (
-          <>
-            <Typography variant="h3">{currentModalData.title}</Typography>
+          <Box p={3}>
+            <Typography variant="h3" pb={2}>
+              {currentModalData.title}
+            </Typography>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={12} sm={6}>
                 <img
                   src={currentModalData.image}
-                  alt=""
+                  alt={currentModalData.title}
                   className={styles.modalImage}
                 />
               </Grid>
@@ -97,10 +98,12 @@ export default function page() {
                 <Typography>{currentModalData.description}</Typography>
               </Grid>
             </Grid>
-            <Link href={currentModalData.link}>
-              <Button>Learn</Button>
-            </Link>
-          </>
+            <Box mt={2} display="flex" justifyContent="flex-end">
+              <Link href={currentModalData.link}>
+                <Button variant="contained">Learn</Button>
+              </Link>
+            </Box>
+          </Box>
         )}
       </Dialog>
     </div>
