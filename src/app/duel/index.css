@@ -1,0 +1,23 @@
+@keyframes spin-border {
+  0% {
+    border-top-color: rgba(255, 255, 255, 0.8);
+  }
+  25% {
+    border-right-color: rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+  }
+  75% {
+    border-left-color: rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    border-top-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.animate-spin-border {
+  border: 8px solid transparent;
+  border-radius: 50%;
+  animation: spin-border 2s linear infinite;
+}
