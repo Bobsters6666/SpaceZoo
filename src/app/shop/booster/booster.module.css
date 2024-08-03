@@ -6,12 +6,16 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin: 10px;
-    width: 100px;
-    height: 200px;
     margin: 0 auto;
+    height: 200px;
+    padding-top: 20px;
+    width: 200px;
     animation: moveLeftRight 2s ease-in-out infinite;
     transform-style: preserve-3d;
+    background-image: url('/crate.jpg');
+    background-size: cover; /* Adjust the image to cover the entire div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
 }
 
 @keyframes moveLeftRight {
@@ -46,33 +50,33 @@
   to { transform: rotateY(90deg); }
 }
 
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-50px); }
-  50% { transform: translateX(50px); }
-  75% { transform: translateX(-50px); }
-  100% { transform: translateX(0); }
+@keyframes grow {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.5); } /* Adjust the scale value to control how big it gets */
 }
 
-.shake {
-  animation: shake 0.5s ease-in-out;
+.grow {
+  animation: grow 0.5s ease-in-out forwards; /* Adjust the duration as needed */
 }
 
 .flyingdiv {
   width: 100px;
   height: 50px;
-  background-image: url('/crate.jpg');
-  background-size: cover; /* Adjust the image to cover the entire div */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; 
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px;
+  padding-left: 30px;
   animation: flyIn 0.5s ease-out forwards;
   color: black;
 }
 
 .page {
     height: 100vh;
+    background-image: url('/boosterbackground.jpg');
+    background-size: cover; /* Adjust the image to cover the entire div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
+    /* centre the content */
+    overflow: hidden;
 }
