@@ -36,7 +36,7 @@ export default function Page() {
       setTimeout(() => {
         clearInterval(interval);
       }, 3000);
-    }, 100);
+    }, 500);
   };
 
   const boosterRef = useRef(null);
@@ -61,6 +61,7 @@ export default function Page() {
 
   return (
     <div className={styles.page}>
+      <div className={styles.translucent_background}>
       {showBooster && (
         <div
           ref={boosterRef}
@@ -90,6 +91,8 @@ export default function Page() {
           </div>
         )
       ))}
+      <button className={styles.addButton}>Add cards to ZooDex</button>
+      </div>
     </div>
   );
 }
