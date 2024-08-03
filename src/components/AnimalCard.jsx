@@ -2,19 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import './AnimalCard.css';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 
 const animals = [ // List of animals. When API key is added, randomly picked. 
-  'Lion',
-  'Tiger',
-  'Elephant',
-  'Giraffe',
-  'Zebra',
-  'Kangaroo',
-  'Panda',
-  'Koala',
-  'Penguin',
-  'Dolphin'
+  'kiwi',
+  'penguin',
+  'tuatara',
+  'fur seal',
+  'blue whale'
 ];
 
 const randomAnimal = () => {
@@ -52,9 +47,12 @@ export default function AnimalCard() {
   }, []);
 
   return (
-    <ul class="card-wrapper">
-      <li class="card">
-        <img src="/frog.jpg" alt="frog"></img>
+    <ul className="card-wrapper">
+      <li className="card">
+        <img 
+          src={`/${animalDetails.animal}.jpg`} 
+          alt={`${animalDetails.detailedName} Image`}
+        />
         <h3>{animalDetails.detailedName}</h3>
         <p>{animalDetails.slogan}</p>
       </li>
