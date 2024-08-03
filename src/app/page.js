@@ -5,8 +5,8 @@ import AnimalCard from "@/components/AnimalCard";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Image
+    <main className="w-screen h-screen overflow-hidden">
+      {/* <Image
         src="/tui.jpg"
         alt="Next.js Logo"
         layout="fill"
