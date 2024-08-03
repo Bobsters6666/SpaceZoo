@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #BCD8C1;
+}
+
+.quiz-container {
+    text-align: center;
+}
+
+.question-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    font-size: 2.5em;
+}
+
+.option-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+    border: 3px solid #2D6935;
+    background-color: #2D6935;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.option {
+    cursor: pointer;
+    margin: 5%;
+}
+
+.image {
+    height: 300px;
+    width: 500px;
+    border-radius: 50px;
+}
+
+.option img:hover {
+    opacity: 0.7;
+}
+
+#next-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #2D6935;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.modal-explain {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
