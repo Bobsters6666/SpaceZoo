@@ -7,22 +7,22 @@ const getRandomAnimal = () => {
   return animals[randomIndex];
 };
 
-const getBorderStyle = (rarity) => {
-  switch (rarity) {
-    case "Common":
-      return "2px solid #cccccc"; 
-    case "Uncommon":
-      return "2px solid #00ff00"; 
-    case "Rare":
-      return "2px solid #0000ff";
-    case "Epic":
-      return "2px solid #800080"; 
-    case "Legendary":
-      return "2px solid #f80000"; 
-  }
-};
+const AnimalCard = React.memo(() => {
+  const getBorderStyle = (rarity) => {
+    switch (rarity) {
+      case "Common":
+        return "2px solid #cccccc"; 
+      case "Uncommon":
+        return "2px solid #00ff00"; 
+      case "Rare":
+        return "2px solid #0000ff";
+      case "Epic":
+        return "2px solid #800080"; 
+      case "Legendary":
+        return "2px solid #f80000"; 
+    }
+  };
 
-const AnimalCard = () => {
   const animal = getRandomAnimal();
 
   return (
@@ -50,6 +50,6 @@ const AnimalCard = () => {
       </li>
     </ul>
   );
-};
+});
 
 export default AnimalCard;
