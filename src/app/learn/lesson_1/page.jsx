@@ -61,8 +61,38 @@ const TitlePage = () => {
               </strong>
             </p>
           ) : null}
-          {index === 1 ? <TooltipText name="test" description="yuh" /> : null}
-          {index === 2 ? <p>Third page</p> : null}
+          {index === 1 ? (
+            <p className={styles.lessonText}>
+              A{" "}
+              <strong
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                beach
+              </strong>{" "}
+              is a part of Earth land that is made of very small things.{" "}
+              <br></br>
+              <br></br> These things include rock, sand and gravel. You can also
+              find shells on the beach, which can come from many{" "}
+              <strong
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                marine animals.
+              </strong>
+            </p>
+          ) : null}
+          {index === 2 ? (
+            <p className={styles.lessonText}>
+              In <strong>New Zealand</strong> the beach are home to tonnes of
+              species - including:
+              <ul>
+                <li>The little blue penguin</li>
+                <li>Oyster catchers</li>
+                <li>Tui</li>
+              </ul>
+            </p>
+          ) : null}
           {index != 2 && (
             <div className={styles.arrowRightContainer} onClick={handleNext}>
               <FaArrowRight color="white" size={24} />
@@ -70,7 +100,7 @@ const TitlePage = () => {
           )}
           {index == 2 && (
             <button
-              className="position absolute right-0 bottom-[-70px] text-base text-white px-6 py-4 bg-[#369212] rounded-full font-bold flex gap-2 items-center hover:bg-[#2e7f4f] transition-all ease-in-out hover:shadow-lg"
+              className="position absolute right-0 bottom-[-70px] text-base text-white px-6 py-4 bg-[#414dda] rounded-full font-bold flex gap-2 items-center hover:bg-opacity-80 transition-all ease-in-out hover:shadow-lg"
               onClick={() => router.push("/quiz")}
             >
               Take quiz <FaArrowRight size={16} />

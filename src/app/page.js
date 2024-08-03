@@ -1,6 +1,4 @@
 import Image from "next/image";
-import styles from "./page.module.css";
-import GoogleMap from "@/components/GoogleMap";
 import AnimalCard from "@/components/AnimalCard";
 
 export default function Home() {
@@ -14,6 +12,9 @@ export default function Home() {
         className="w-screen h-screen"
       />
       <AnimalCard></AnimalCard>
+      <AnimalCard></AnimalCard>
     </main>
+  );
+}
   );
 }
