@@ -24,7 +24,9 @@ export default function App() {
   const [currentQuestion, setCurrentQuestion] = useState(1);
 
   const handleNextQuestion = () => {
-    setCurrentQuestion(currentQuestion + 1);
+    currentQuestion == 1
+      ? setCurrentQuestion(currentQuestion + 1)
+      : setCurrentQuestion(2);
   };
 
   return (

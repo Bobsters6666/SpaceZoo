@@ -12,6 +12,7 @@ export default function Page() {
   const [isShaking, setIsShaking] = useState(false);
   const [cardAnimations, setCardAnimations] = useState([false, false, false]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const handleClick = () => {
     setIsAnimating(!isAnimating);
@@ -40,6 +41,9 @@ export default function Page() {
   };
 
   const boosterRef = useRef(null);
+  setTimeout(() => {
+    setLoading(false);
+  }, 200);
 
   useEffect(() => {
     if (boosterRef.current) {
@@ -60,39 +64,49 @@ export default function Page() {
   };
 
   return (
-    <div className={styles.page}>
-      <div className={styles.translucent_background}>
-      {showBooster && (
-        <div
-          ref={boosterRef}
-          className={`${styles.booster} ${isShaking ? styles.grow : ""}`}
-          onClick={handleClick}
-          style={{
-            animationPlayState: isAnimating ? "running" : "paused",
-          }}
-        ></div>
+
+    <>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className={styles.page}>
+          {showBooster && (
+            <div
+              ref={boosterRef}
+              className={`${styles.booster} ${isShaking ? styles.grow : ""}`}
+              onClick={handleClick}
+              style={{
+                animationPlayState: isAnimating ? "running" : "paused",
+                transform: isRotated ? "rotateY(90deg)" : "none",
+              }}
+            ></div>
+          )}
+          {cardAnimations.map(
+            (showCard, index) =>
+              showCard && (
+                <div
+                  key={index}
+                  style={{
+                    position: "relative",
+                    top: divPosition.top + 100,
+                    left: divPosition.left,
+                    zIndex: hoveredIndex === index ? 1000 : 1, // Set high z-index on hover
+                  }}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div
+                    className={styles.flyingdiv}
+                    style={{ top: index * 80, left: index * 150 }}
+                  >
+                    <AnimalCard />
+                  </div>
+                </div>
+              )
+          )}
+        </div>
       )}
-      {cardAnimations.map((showCard, index) => (
-        showCard && (
-          <div
-            key={index}
-            style={{
-              position: "relative",
-              top: divPosition.top + 100,
-              left: divPosition.left,
-              zIndex: hoveredIndex === index ? 1000 : 1, // Set high z-index on hover
-            }}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <div className={styles.flyingdiv} style={{ top: index * 80, left: index * 150 }}>
-              <AnimalCard />
-            </div>
-          </div>
-        )
-      ))}
-      <button className={styles.addButton}>Add cards to ZooDex</button>
-      </div>
-    </div>
+    </>
+
   );
 }

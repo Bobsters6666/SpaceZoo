@@ -27,7 +27,7 @@ const TitlePage = () => {
 
   setTimeout(() => {
     setShowButton(true);
-  }, 12000);
+  }, 9000);
 
   // Define animation variants
   const variants = {
@@ -160,7 +160,7 @@ const TitlePage = () => {
       {showButton && (
         <button
           className="absolute right-10 bottom-10 text-xl px-6 py-4 bg-green-500 rounded-full shadow-2xl font-bold transition-all duration-300 hover:bg-green-800 hover:text-white hover:scale-[102%]"
-          onClick={router.push("/quiz")}
+          onClick={() => router.push("/quiz")}
         >
           Take the Quiz
         </button>
