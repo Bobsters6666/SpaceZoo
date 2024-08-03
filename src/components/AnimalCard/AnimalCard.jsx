@@ -30,10 +30,13 @@ const AnimalCard = React.memo(() => {
     <ul className="card-wrapper w-[200px]">
       <li className="card w-[200px]">
         <div className="card-inner">
-          <div className="card-front">
+          <div className="card-front"
+          style={{ border: getBorderStyle(animal.rarity) }}>
             <img src={animal.photoUrl} alt={`${animal.name} Image`} />
             <h3>{animal.name}</h3>
-            <p>{animal.description}</p>
+            <i className="attack-stat">Attack: {animal.stats.attack}</i>
+            <i className="health-stat">Health: {animal.stats.health}</i>
+            <p className="back-rarity">{animal.rarity}</p>
           </div>
           <div
             className="card-back"
@@ -45,7 +48,7 @@ const AnimalCard = React.memo(() => {
               alt={`${animal.name} Image`}
             />
             <p className="back-text">{animal.funFact}</p>
-            <p className="back-rarity">{animal.rarity}</p>
+            <p>{animal.description}</p>
           </div>
         </div>
       </li>

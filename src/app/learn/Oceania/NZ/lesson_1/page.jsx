@@ -4,7 +4,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaArrowRight, FaX } from "react-icons/fa6";
+import {
+  FaArrowRight,
+  FaHandPointDown,
+  FaHandPointUp,
+  FaRegHandPointRight,
+  FaRegHandPointUp,
+  FaX,
+} from "react-icons/fa6";
 
 const TitlePage = () => {
   const [isZoomed, setIsZoomed] = useState(false); // State to control zoom
@@ -39,31 +46,31 @@ const TitlePage = () => {
   const buttons = [
     {
       id: 1,
-      position: { left: "370px", top: "450px" },
+      position: { left: "450px", top: "430px" },
       description:
         "Surfers are athletes who ride ocean waves using a surfboard, requiring balance and skill.",
     },
     {
       id: 2,
-      position: { left: "50px", top: "520px" },
+      position: { left: "120px", top: "520px" },
       description:
         "Palm trees are tropical plants known for their long, slender trunks and large, fan-like leaves.",
     },
     {
       id: 3,
-      position: { left: "650px", top: "470px" },
+      position: { left: "750px", top: "470px" },
       description:
         "Oceans are large bodies of saltwater that cover about 71% of Earth's surface, vital for climate and biodiversity.",
     },
     {
       id: 4,
-      position: { left: "850px", top: "520px" },
+      position: { left: "920px", top: "500px" },
       description:
         "Sandstone is a sedimentary rock formed by compacted sand grains, often found in desert and beach environments.",
     },
     {
       id: 5,
-      position: { left: "850px", top: "720px" },
+      position: { left: "950px", top: "720px" },
       description:
         "Sand is a granular material composed of finely divided rock and mineral particles, commonly found on beaches.",
     },
@@ -106,10 +113,10 @@ const TitlePage = () => {
           >
             {focusedButtonIndex != button.id - 1 && (
               <button
-                onClick={() => handleCheckHereClick(index)} // Handle focus for each button
-                className="bg-blue-600 hover:opacity-75 text-white font-bold py-2 px-4 rounded flex items-center gap-4 absolute text-nowrap -z-[5]"
+                onClick={() => handleCheckHereClick(index)}
+                className="bg-blue-600 hover:bg-blue-700 duration-300 transition-all p-4 text-white rounded-full shadow-xl hover:shadow-2xl border-2 border-white absolute -z-[5]"
               >
-                Check here <FaArrowRight />
+                <FaRegHandPointRight size={24} color="white  " />
               </button>
             )}
 
@@ -149,7 +156,7 @@ const TitlePage = () => {
           <div className="flex justify-center">
             <button
               onClick={handleExploreClick} // Add click handler
-              className="bg-blue-600 hover:opacity-75 transition-all duration-300 text-white font-bold py-2 px-4 rounded mt-6"
+              className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white font-bold py-2 px-4 rounded mt-6"
             >
               Explore the Beach
             </button>

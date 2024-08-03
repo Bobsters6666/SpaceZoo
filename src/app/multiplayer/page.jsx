@@ -1,12 +1,14 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import AnimalCard from '../../components/AnimalCard/AnimalCard';
-import BlankAnimalCard from '../../components/BlankAnimalCard/BlankAnimalCard';
+import React, { useEffect, useRef } from 'react';
 import styles from './multiplayer.module.css';
 import { Avatar } from '@mui/material';
 import { useCombatGame } from './useCombatHook';
 
 export default function Combat() {
+  const audioRef = useRef(null);
+  const winAudioRef = useRef(null);
+  const loseAudioRef = useRef(null);
+
   const {
     selectedCard,
     selectedOpponentCard,
@@ -28,7 +30,37 @@ export default function Combat() {
     handleHandLeave,
     startGame,
     handlePass,
+    playerWon
   } = useCombatGame();
+
+  // Play background music
+  useEffect(() => {
+    if (audioRef.current) {
+      if (!showStartScreen && !gameOver) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    }
+  }, [showStartScreen, gameOver]);
+
+  // Play win/lose audio when game is over
+  useEffect(() => {
+    if (gameOver) {
+      if (playerWon) {
+        if (winAudioRef.current) {
+          console.log("Playing win audio");
+          winAudioRef.current.play().catch(e => console.error("Win audio play failed:", e));
+        }
+      } else {
+        if (loseAudioRef.current) {
+          console.log("Playing lose audio");
+          loseAudioRef.current.play().catch(e => console.error("Lose audio play failed:", e));
+        }
+      }
+    }
+  }, [gameOver, playerWon]);
 
   return (
     <div className={styles.combat}>
@@ -97,6 +129,18 @@ export default function Combat() {
         </button></div></div>}
         <div className={styles.turn_counter}>Turn: {turn}</div>
       </>}
+      <audio ref={audioRef} loop preload="auto">
+        <source src="/Audio/Boss_music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio ref={winAudioRef} preload="auto">
+        <source src="/Audio/Win_music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio ref={loseAudioRef} preload="auto">
+        <source src="/Audio/Lose_music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   );
 }

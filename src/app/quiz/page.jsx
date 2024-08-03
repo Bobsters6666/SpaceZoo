@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { QuizModal } from "../../components/QuizModal/quizModal";
+import { QuizModal } from "../../components/quizModal/quizModal";
 import { QuizModal2 } from "../../components/quizModal/quizModal2";
 
 export default function App() {
