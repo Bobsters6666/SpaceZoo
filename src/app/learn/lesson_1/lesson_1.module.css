@@ -7,7 +7,7 @@
 .title {
   color: white;
   font-size: 3rem;
-  margin-top: 0;
+  margin-bottom: 30px;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   padding-top: 20px;
@@ -18,10 +18,9 @@
 .content {
   display: flex;
   flex-direction: column;
-  align-items: end;
-  height: calc(
-    100vh - 3rem - 40px
-  ); /* Subtract the height of the title and padding */
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
 }
 
 .caption {
@@ -53,7 +52,7 @@
   color: white;
   font-size: 1.5rem;
   padding: 40px 30px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.65);
   border-radius: 10px;
   width: 50%;
   color: black;
@@ -104,4 +103,5 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 100vh;
 }

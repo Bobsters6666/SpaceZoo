@@ -36,8 +36,9 @@ const TitlePage = () => {
 
   return (
     <div className={styles.lessonPage}>
-      <h1 className={styles.title}>What is a beach?</h1>
+      {/* <h1 className={styles.title}>What is a beach?</h1> */}
       <div className={`${styles.content} relative`}>
+        <h1 className={styles.title}>What is a beach?</h1>
         <div className={styles.textContainer}>
           {index === 0 ? (
             <p className={styles.lessonText}>
