@@ -1,0 +1,58 @@
+.booster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    width: 100px;
+    height: 200px;
+    margin: 0 auto;
+    animation: moveLeftRight 2s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(50px) rotate(10deg); /* Rotate slightly */
+  }
+  50% {
+    transform: translateX(100px) rotate(0deg);
+  }
+  75% {
+    transform: translateX(50px) rotate(-10deg); /* Rotate slightly in the opposite direction */
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes flyIn {
+  from { transform: translateY(0px); opacity: 0; }
+  to { transform: translateY(100px); opacity: 1; }
+}
+
+@keyframes rotateY {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(90deg); }
+}
+
+.flyingdiv {
+  width: 100px;
+  height: 50px;
+  background-color: lightcoral;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  animation: flyIn 0.5s ease-out forwards;
+}
