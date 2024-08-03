@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes colorChange {
+  0% {
+    color: #84c4f5; /* First color */
+  }
+  50% {
+    color: #edaafa; /* Second color */
+  }
+  100% {
+    color: #84c4f5; /* First color again */
+  }
+}
+
+.color-transition {
+  animation: colorChange 4s infinite;
+}
+
