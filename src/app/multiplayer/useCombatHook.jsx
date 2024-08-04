@@ -148,6 +148,11 @@ export function useCombatGame() {
     return "tie";
   }, [opponentAnimalHealths, playerAnimalHealths, updateHealth]);
 
+  const determineCrashWinnerCoinFlip = useCallback((playerCard, opponentCard, playerIndex, opponentIndex) => {
+    // 50/50 chance of either player winning
+    return Math.random() < 0.5 ? "player" : "opponent";
+  }, []);
+
 
   const checkGameOver = useCallback((playerCards, opponentCards) => {
     const playerCardsRemaining = playerCards.filter(
@@ -250,7 +255,7 @@ export function useCombatGame() {
           setIsCardCrashing(true);
 
           setTimeout(() => {
-            const winner = determineCrashWinner(
+            const winner = determineCrashWinnerCoinFlip(
               playerAnimals[selectedCard],
               opponentAnimals[newSelectedOpponentCard],
               selectedCard,
