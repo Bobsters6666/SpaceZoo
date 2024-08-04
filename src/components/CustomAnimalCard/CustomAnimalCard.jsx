@@ -18,7 +18,7 @@ const getBorderStyle = (rarity) => {
   }
 };
 
-const CustomAnimalCard = React.memo(({ animal }) => {
+const CustomAnimalCard = React.memo(({ animal, health = animal.stats.health }) => {
   return (
     <ul className="card-wrapper w-[200px]">
       <li className="card w-[200px]">
@@ -37,7 +37,7 @@ const CustomAnimalCard = React.memo(({ animal }) => {
                 <FaHandFist size={12} color="white" />
               </i>
               <i className="health-stat flex items-center gap-2">
-                Health: {animal.stats.health} <FaHeart size={12} color="red" />
+                Health: {health} <FaHeart size={12} color="red" />
               </i>
             </div>
 
