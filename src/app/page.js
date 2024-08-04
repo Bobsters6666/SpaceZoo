@@ -5,7 +5,6 @@ import { useState } from "react";
 import { CgChevronDown } from "react-icons/cg";
 import { FaArrowRight } from "react-icons/fa6";
 
-
 export default function Home() {
   const [openTooltip, setOpenTooltip] = useState(false);
 
@@ -41,7 +40,6 @@ export default function Home() {
               </p>
               <p className="pt-2">Dare to explore?</p>
               <div className="flex justify-between mt-6">
-                <button className="text-red-600 font-semibold">Exit</button>
                 <Link href={"/nz"}>
                   <button className="bg-blue-600 px-4 py-2 flex gap-2 items-center rounded-lg duration-300 transition-all hover:bg-blue-700">
                     Explore <FaArrowRight />
