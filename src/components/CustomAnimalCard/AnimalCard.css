@@ -11,6 +11,10 @@
   perspective: 1000px;
 }
 
+.tinted-image {
+  filter: sepia(1) hue-rotate(-50deg);
+}
+
 .card-inner {
   position: relative;
   width: 200px;
