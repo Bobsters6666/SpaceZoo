@@ -181,20 +181,17 @@ export function useCombatGame() {
       selectedCardIndex,
       selectedOpponentCardIndex
     ) => {
-      const updatedPlayerCards =
-        winner === "player"
-          ? playerCards
-          : playerCards.map((card, index) =>
-            index === selectedCardIndex || playerAnimalHealths[index] <= 0
-              ? null : card
-          );
-      const updatedOpponentCards =
-        winner === "opponent"
-          ? opponentCards
-          : opponentCards.map((card, index) =>
-            index === selectedOpponentCardIndex || opponentAnimalHealths[index] <= 0
-              ? null : card
-          );
+      const updatedPlayerCards = playerCards.map((card, index) =>
+        index === selectedCardIndex && winner !== "player"
+          ? null
+          : card
+      );
+
+      const updatedOpponentCards = opponentCards.map((card, index) =>
+        index === selectedOpponentCardIndex && winner !== "opponent"
+          ? null
+          : card
+      );
 
       return {
         playerCards: updatedPlayerCards,
@@ -212,6 +209,8 @@ export function useCombatGame() {
             key={index}
             animal={animal}
             health={playerAnimalHealths[index]}
+            /* Add tint if the card has less than full health */
+            tinted={playerAnimalHealths[index] < playerAnimals[index].stats.health}
           />
         ) : null
       ))
@@ -255,7 +254,7 @@ export function useCombatGame() {
           setIsCardCrashing(true);
 
           setTimeout(() => {
-            const winner = determineCrashWinnerCoinFlip(
+            const winner = determineCrashWinner(
               playerAnimals[selectedCard],
               opponentAnimals[newSelectedOpponentCard],
               selectedCard,
@@ -275,6 +274,13 @@ export function useCombatGame() {
 
             setPlayerCards(newPlayerCards);
             setOpponentCards(newOpponentCards);
+            setActualOpponentCards((prevCards) =>
+              prevCards.map((card, index) =>
+                index === newSelectedOpponentCard && winner !== "opponent"
+                  ? null
+                  : card
+              )
+            );
             setWinnerMessage(
               winner === "player" ? "Opponent card is down!" : winner === "opponent" ? "Player card is down!" : "It's a tie!"
             );
