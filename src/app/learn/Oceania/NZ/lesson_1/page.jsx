@@ -63,7 +63,7 @@ const TitlePage = () => {
   const buttons = [
     {
       id: 1,
-      position: { left: "450px", top: "430px" },
+      position: { left: "450px", top: "470px" },
       description:
         "Surfers are athletes who ride ocean waves using a surfboard, requiring balance and skill.",
     },
@@ -81,7 +81,7 @@ const TitlePage = () => {
     },
     {
       id: 4,
-      position: { left: "920px", top: "500px" },
+      position: { left: "920px", top: "530px" },
       description:
         "Sandstone is a sedimentary rock formed by compacted sand grains, often found in desert and beach environments.",
     },

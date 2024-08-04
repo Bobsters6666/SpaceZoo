@@ -30,7 +30,7 @@ export default function Home() {
       </h2>
 
       <div
-        className="absolute bg-white left-[1380px] bottom-[110px] w-8 h-8 cursor-pointer"
+        className="absolute left-[1380px] bottom-[110px] w-8 h-8 cursor-pointer"
         onClick={() => setOpenTooltip(true)}
       >
         {openTooltip && (

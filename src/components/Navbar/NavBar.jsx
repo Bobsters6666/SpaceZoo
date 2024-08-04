@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="z-50 absolute flex flex-row justify-end items-center gap-[1rem] pt-[1rem] pb-[1rem] pr-[3rem] bg-transparent min-w-full ">
+    <div className="z-50 fixed top-0 right-0 flex flex-row justify-end items-center gap-[1rem] pt-[1rem] pb-[1rem] pr-[3rem] bg-transparent min-w-full ">
       <Link href={"/"} shallow>
         <Tooltip label="Learn">
           <Avatar
