@@ -13,7 +13,7 @@ const NavBar = () => {
           <Avatar
             sx={{
               background:
-                "linear-gradient(180deg, rgba(2,0,36,1) 66%, rgba(255,255,255,1) 100%)",
+                "linear-gradient(0deg, rgba(250,250,250,1) 20%, rgba(0,0,0,1) 44%)",
               width: 45,
               height: 45,
             }}
