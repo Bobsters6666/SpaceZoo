@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="w-screen h-screen overflow-hidden ">
       <div className="flex items-center justify-center mt-6 gap-4 bg-white w-fit mx-auto px-8 py-3 bg-opacity-30 rounded-full cursor-pointer shadow-xl">
-        <h1 className="text-white text-center text-2xl font-bold">World Map</h1>
+        <h1 className="text-white text-center text-2xl font-bold">Earth</h1>
         <CgChevronDown size={32} color="white" />
       </div>
 
