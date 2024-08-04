@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -6,21 +6,20 @@ import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa6";
 
 const SideBar = () => {
-    const [ isCollapsed, setIsCollapsed ] = useState(false);
-    const pathName = usePathname();
-   
-    const regionLinks = [
-        {title: "Africa", link: "/profile/africa"},
-        {title: "Antarctica", link: "/profile/antarctica"},
-        {title: "South America", link: "/profile/south-america"},
-        {title: "Asia", link: "/profile/asia"},
-        {title: "Europe", link: "/profile/europe"},
-        {title: "America", link: "/profile/america"},
-        {title: "Oceania", link: "/profile/oceania"},
-     
-    ]
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const pathName = usePathname();
 
-    const isProfilePage = pathName.split('/').pop() === 'profile';
+  const regionLinks = [
+    { title: "Africa", link: "/profile/africa" },
+    { title: "Antarctica", link: "/profile/antarctica" },
+    { title: "South America", link: "/profile/south-america" },
+    { title: "Asia", link: "/profile/asia" },
+    { title: "Europe", link: "/profile/europe" },
+    { title: "America", link: "/profile/america" },
+    { title: "Oceania", link: "/profile/oceania" },
+  ];
+
+  const isProfilePage = pathName.split("/").pop() === "profile";
 
     return (
         <div className="flex flex-col text-lg gap-[1rem] p-[2rem] border-r-[0.2] border-gray-500 font-medium min-w-[15rem]">

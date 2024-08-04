@@ -5,133 +5,82 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function QuizModal2({ onNextQuestion }) {
+  const [selectedOption, setSelectedOption] = useState(null);
   const [result, setResult] = useState("");
-  const [isAnswerChecked, setIsAnswerChecked] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleOptionClick = (isCorrect) => {
-    setResult(isCorrect ? "Correct!" : "Incorrect!");
-    setIsAnswerChecked(true);
-    setIsModalVisible(true);
+    setSelectedOption(isCorrect);
+  };
+
+  const handleSubmit = () => {
+    if (selectedOption !== null) {
+      setResult(selectedOption ? "Correct!" : "Incorrect!");
+      setIsModalVisible(true);
+    }
   };
 
   const handleCloseModal = () => {
     setIsModalVisible(false);
+    onNextQuestion(selectedOption);
   };
 
   return (
-    <div className="quiz-container w-screen">
+    <div className="quiz-container">
       <Image
         src="/90_mile_beach.jpg"
         alt="beach"
         layout="fill"
-        className="w-screen h-screen absolute -z-10"
+        className="w-screen h-screen absolute top-0 left-0 -z-10"
       />
       <div className="question-container">
-        <p className="font-semibold text-shadow-xl -mb-8 mt-4">
-          Q. Which of the following is <strong>NOT</strong> typically found on a
-          beach?
-        </p>
+        <p>Q. Which of the following is NOT typically found on the beach?</p>
       </div>
 
       <div className="option-container">
-        <div className="option">
-          <img
-            className="image"
-            src="/shell.jpg"
-            alt="Shell"
-            onClick={() => handleOptionClick(false)}
-          />
-        </div>
-        <div className="option">
-          <img
-            className="image"
-            src="/fish.jpg"
-            alt="Fish"
-            onClick={() => handleOptionClick(true)}
-          />
-        </div>
-        <div className="option">
-          <img
-            className="image"
-            src="/sand.jpg"
-            alt="Sand"
-            onClick={() => handleOptionClick(false)}
-          />
-        </div>
-        <div className="option">
-          <img
-            className="image"
-            src="/rock.jpg"
-            alt="Rock"
-            onClick={() => handleOptionClick(false)}
-          />
-        </div>
+        {[
+          { src: "/shell.jpg", alt: "Shell", isCorrect: false },
+          { src: "/fish.jpg", alt: "Fish", isCorrect: true },
+          { src: "/sand.jpg", alt: "Sand", isCorrect: false },
+          { src: "/rock.jpg", alt: "Rock", isCorrect: false },
+        ].map((option, index) => (
+          <div
+            key={index}
+            className={`option ${selectedOption === index ? "selected" : ""}`}
+            onClick={() => handleOptionClick(index, option.isCorrect)}
+          >
+            <img className="image" src={option.src} alt={option.alt} />
+            <div className="option-text">{option.alt}</div>
+          </div>
+        ))}
       </div>
 
-      {isAnswerChecked && (
-        <button id="next-button" onClick={onNextQuestion}>
-          Result
+      {selectedOption !== null && (
+        <button id="submit-button" onClick={handleSubmit}>
+          Submit
         </button>
       )}
 
       {isModalVisible && (
-        <>
-          {result == "Correct!" ? (
-            <div className="modal">
-              <div className="modal-content">
-                <span className="close" onClick={handleCloseModal}>
-                  &times;
-                </span>
-                <p className="text-green-600 text-xl font-bold mb-4">
-                  {result}
+        <div className="modal">
+          <div className="modal-content">
+            <p className="modal-result">{result}</p>
+            <div className="modal-explain-container">
+              <div>
+                <img className="modal-image" src="/fish.jpg" alt="Fish" />
+              </div>
+              <div>
+                <p className="modal-explain">
+                  Fish live in the ocean, not on the beach. You can find rocks,
+                  sand, and shells on a beach, but not fish.
                 </p>
-                <div className="flex flex-col justify-center items-center">
-                  <div>
-                    <img className="modal-image" src="/fish.jpg" alt="Fish" />
-                  </div>
-                  <div>
-                    <p className="modal-explain">
-                      The kiwi bird is a national symbol of New Zealand but it
-                      lives in forests, not on beaches. Kiwis are flightless,
-                      nocturnal birds.
-                    </p>
-                  </div>
-                  <Link href={"/shop/booster"}>
-                    <button id="next-button" onClick={onNextQuestion}>
-                      Collect your Reward!
-                    </button>
-                  </Link>
-                </div>
               </div>
             </div>
-          ) : (
-            <>
-              {" "}
-              <div className="modal">
-                <div className="modal-content">
-                  <span className="close" onClick={handleCloseModal}>
-                    &times;
-                  </span>
-                  <p className="text-red-600 text-xl font-bold mb-4">
-                    {result}
-                  </p>
-                  <div className="moda-explain-container">
-                    <div>
-                      <p className="modal-explain">
-                        You have selected the wrong answer <br /> Try Again!
-                      </p>
-                    </div>
-                  </div>
-
-                  <button id="next-button" onClick={handleCloseModal}>
-                    Try again
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
-        </>
+            <Link href="/shop/booster">
+              <button id="next-button">Claim reward</button>
+            </Link>
+          </div>
+        </div>
       )}
     </div>
   );

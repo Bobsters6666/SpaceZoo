@@ -1,4 +1,4 @@
-import NavBar from "../../components/NavBar";
+import NavBar from "../../components/NavBar/NavBar";
 import SideBar from "../../components/profile/SideBar"
 import ParticlesComponent from "../../components/Particles";
 

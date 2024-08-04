@@ -77,6 +77,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
 }
 
+.hovered_hand {
+z-index: 1000;
+}
+
 .selected_card {
   position: fixed;
   top: 30%; /* Center vertically */
@@ -175,7 +179,7 @@
 }
 
 .combat {
-    background-image: url('/battlebackground.jpg');
+    background-image: url('/savannah_background.jpg');
     background-size: cover; /* Adjust the image to cover the entire div */
     background-position: center; /* Center the image */
     background-repeat: no-repeat;
@@ -196,3 +200,45 @@
   text-align: center;
   font-size: 24px;
 }
+
+.startScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 40px;
+  border-radius: 10px;
+  z-index: 1000;
+  text-align: center;
+}
+
+.startScreen h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+
+.startScreen button {
+  font-size: 24px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.startScreen button:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+.startScreen button:active {
+  transform: scale(0.95);
+}
+
+
+
+

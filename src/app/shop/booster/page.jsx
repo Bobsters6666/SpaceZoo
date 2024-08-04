@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./booster.module.css";
-import AnimalCard from "../../../components/AnimalCard";
+import AnimalCard from "../../../components/AnimalCard/AnimalCard";
 
 export default function Page() {
   const [isAnimating, setIsAnimating] = useState(true);
@@ -13,6 +13,7 @@ export default function Page() {
   const [cardAnimations, setCardAnimations] = useState([false, false, false]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [boosterDone, setBoosterDone] = useState(false);
 
   const handleClick = () => {
     setIsAnimating(!isAnimating);
@@ -36,6 +37,7 @@ export default function Page() {
       // stop the interval after 3 seconds
       setTimeout(() => {
         clearInterval(interval);
+        setBoosterDone(true);
       }, 3000);
     }, 500);
   };
@@ -64,7 +66,6 @@ export default function Page() {
   };
 
   return (
-
     <>
       {loading ? (
         <div>Loading...</div>
@@ -107,6 +108,5 @@ export default function Page() {
         </div>
       )}
     </>
-
   );
 }

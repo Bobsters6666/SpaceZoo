@@ -1,6 +1,6 @@
 import { Quicksand } from "next/font/google";
 import "./globals.css";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar/NavBar";
 
 
 const quicksand = Quicksand({

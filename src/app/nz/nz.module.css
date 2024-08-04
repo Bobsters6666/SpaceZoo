@@ -1,0 +1,94 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "quicksand", "san-serif";
+}
+
+.path {
+  width: 60vw;
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translate(-50%, -50%);
+}
+
+.start {
+  width: 50px;
+  position: absolute;
+  top: 85%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+}
+
+.shuttle1 {
+  width: 50px;
+  position: absolute;
+  top: 59%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+.shuttle2 {
+  width: 50px;
+  position: absolute;
+  top: 76%;
+  left: 44%;
+  transform: translate(-50%, -50%);
+}
+.shuttle3 {
+  width: 50px;
+  position: absolute;
+  top: 44%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+}
+.shuttle4 {
+  width: 50px;
+  position: absolute;
+  top: 54%;
+  left: 74%;
+  transform: translate(-50%, -50%);
+}
+
+.finish {
+  width: 50px;
+  position: absolute;
+  top: 13%;
+  right: 19%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+  .path {
+    width: 70vh;
+    top: 60%;
+    left: 50%;
+  }
+}
+.shuttle1:hover {
+  transform: scale(1.2);
+  transition: transform 0.4s ease-in-out;
+}
+.shuttle2:hover {
+  transform: scale(1.2) translate(-70%, -70%);
+  transition: transform 0.4s ease-in-out;
+}
+.shuttle3:hover {
+  transform: scale(1.2);
+  transition: transform 0.4s ease-in-out;
+}
+.shuttle4:hover {
+  transform: scale(1.2) translate(-70%, -70%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalImage {
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
+  margin-right: 5px;
+}
