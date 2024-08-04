@@ -1,5 +1,5 @@
 import ProfileAnimalCard from "../../../components/profile/ProfileAnimalCard";
-import profileAnimals from "../../../data/profileAnimals";
+import profileAnimals from "../../../data/profileanimals";
 import "../../../components/profile/ProfileAnimalCard.css";
 import { DiDigitalOcean } from "react-icons/di";
 import styles from "./page.module.css";
