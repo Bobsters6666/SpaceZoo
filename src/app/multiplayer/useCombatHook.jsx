@@ -150,11 +150,7 @@ export function useCombatGame() {
 
   const determineCrashWinnerCoinFlip = useCallback((playerIndex, opponentIndex) => {
     // 50/50 chance of either player winning
-    // increased chance when player has higher attack
-    const playerCard = playerAnimals[playerIndex];
-    const opponentCard = opponentAnimals[opponentIndex];
-    const playerChance = playerCard.stats.attack / (playerCard.stats.attack + opponentCard.stats.attack);
-    return Math.random() < playerChance ? "player" : "opponent";
+    return Math.random() < 0.35 ? "player" : "opponent";
   }, []);
 
 
