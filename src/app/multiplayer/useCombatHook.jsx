@@ -1,6 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
 import BlankAnimalCard from "../../components/BlankAnimalCard/BlankAnimalCard";
+import CustomAnimalCard from "../../components/CustomAnimalCard/CustomAnimalCard";
+import animals from "../../data/animals";
 
 const CARD_COUNT = 4;
 const DEAL_INTERVAL = 500;
@@ -8,19 +10,23 @@ const CRASH_ANIMATION_DURATION = 1000;
 const OPPONENT_TURN_DELAY = 1000;
 const WINNER_MESSAGE_DURATION = 600;
 
+const getRandomAnimals = (count) => {
+  return Array.from({ length: count }, () => {
+    const randomIndex = Math.floor(Math.random() * animals.length);
+    return animals[randomIndex];
+  });
+};
+
 export function useCombatGame() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedOpponentCard, setSelectedOpponentCard] = useState(null);
-  const [playerCards, setPlayerCards] = useState(
-    [...Array(CARD_COUNT)].map(() => <AnimalCard />)
-  );
-
+  const [playerAnimals, setPlayerAnimals] = useState(getRandomAnimals(CARD_COUNT));
+  const [opponentAnimals, setOpponentAnimals] = useState(getRandomAnimals(CARD_COUNT));
+  const [playerCards, setPlayerCards] = useState(playerAnimals.map((animal) => <CustomAnimalCard animal={animal} />));
   const [opponentCards, setOpponentCards] = useState(
     [...Array(CARD_COUNT)].map(() => <BlankAnimalCard />)
   );
-  const [actualOpponentCards, setActualOpponentCards] = useState(
-    [...Array(CARD_COUNT)].map(() => <AnimalCard />)
-  );
+  const [actualOpponentCards, setActualOpponentCards] = useState(opponentAnimals.map((animal) => <CustomAnimalCard animal={animal} />));
   const [visiblePlayerCards, setVisiblePlayerCards] = useState(0);
   const [visibleOpponentCards, setVisibleOpponentCards] = useState(0);
   const [showStartScreen, setShowStartScreen] = useState(true);
@@ -81,8 +87,14 @@ export function useCombatGame() {
     [actualOpponentCards]
   );
 
-  const determineCrashWinner = useCallback(() => {
-    return Math.random() < 0.5 ? "player" : "opponent";
+  const determineCrashWinner = useCallback((playerCard, opponentCard) => {
+    console.log(playerCard, opponentCard);
+    const playerWins = playerCard.stats.attack > opponentCard.stats.health;
+    const opponentWins = opponentCard.stats.attack > playerCard.stats.health;
+
+    if (playerWins && !opponentWins) return "player";
+    if (opponentWins && !playerWins) return "opponent";
+    return "tie";
   }, []);
 
   const checkGameOver = useCallback((playerCards, opponentCards) => {
@@ -112,15 +124,13 @@ export function useCombatGame() {
       selectedOpponentCardIndex
     ) => {
       const updatedPlayerCards =
-        winner === "player"
+        winner === "player" || winner === "tie"
           ? playerCards
-          : playerCards.filter((_, index) => index !== selectedCardIndex);
+          : playerCards.map((card, index) => index === selectedCardIndex ? null : card);
       const updatedOpponentCards =
-        winner === "opponent"
+        winner === "opponent" || winner === "tie"
           ? opponentCards
-          : opponentCards.filter(
-            (_, index) => index !== selectedOpponentCardIndex
-          );
+          : opponentCards.map((card, index) => index === selectedOpponentCardIndex ? null : card);
 
       return {
         playerCards: updatedPlayerCards,
@@ -140,7 +150,7 @@ export function useCombatGame() {
 
     setTimeout(() => {
       if (selectedCard !== null) {
-        const newSelectedOpponentCard = selectOpponentCard(opponentCards);
+        const newSelectedOpponentCard = selectOpponentCard(actualOpponentCards);
         setSelectedOpponentCard(newSelectedOpponentCard);
         setOpponentCards((prevOpponentCards) =>
           updateOpponentCards(prevOpponentCards, newSelectedOpponentCard)
@@ -150,7 +160,7 @@ export function useCombatGame() {
           setIsCardCrashing(true);
 
           setTimeout(() => {
-            const winner = determineCrashWinner();
+            const winner = determineCrashWinner(playerAnimals[selectedCard], opponentAnimals[newSelectedOpponentCard]);
             const {
               playerCards: newPlayerCards,
               opponentCards: newOpponentCards,
