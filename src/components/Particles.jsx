@@ -35,7 +35,7 @@ function ParticlesComponent() {
             },
             particles: {
               color: {
-                value: ["#7400b8", "#48bfe3", "#72efdd", "#f7f7f7"],
+                value: ["#FFFFFF","#f7f7f7", "#a9349c", "#174f8d"],
               },
 
               move: {
@@ -93,7 +93,7 @@ function ParticlesComponent() {
                 },
               },
               shape: {
-                type: ["circle", "emoji", "triangle", "polygon"],
+                type: ["circle", "triangle", "polygon"],
                 options: {
                   polygon: [
                     {
@@ -103,21 +103,6 @@ function ParticlesComponent() {
                       sides: 6,
                     },
                   ],
-                  // "emoji": {
-                  //   "particles": {
-                  //     "size": {
-                  //       "value": 8
-                  //     }
-                  //   },
-                  //   "value": [
-                  //     "💩",
-                  //     "🤡",
-                  //     "🍀",
-                  //     "🍙",
-                  //     "🦄",
-                  //     "⭐️"
-                  //   ]
-                  // }
                 },
               },
               size: {
