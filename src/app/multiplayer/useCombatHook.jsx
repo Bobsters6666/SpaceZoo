@@ -254,7 +254,7 @@ export function useCombatGame() {
           setIsCardCrashing(true);
 
           setTimeout(() => {
-            const winner = determineCrashWinner(
+            const winner = determineCrashWinnerCoinFlip(
               playerAnimals[selectedCard],
               opponentAnimals[newSelectedOpponentCard],
               selectedCard,
