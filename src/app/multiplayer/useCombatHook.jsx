@@ -1,10 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
-<<<<<<< HEAD
-import BlankAnimalCard from "../../components/BlankAnimalCard";
-=======
 import BlankAnimalCard from "../../components/BlankAnimalCard/BlankAnimalCard";
->>>>>>> a91ed5f2cd4023b4b38cc040e644c63bb7ed7880
 
 const CARD_COUNT = 4;
 const DEAL_INTERVAL = 500;
@@ -118,8 +114,8 @@ export function useCombatGame() {
         winner === "opponent"
           ? opponentCards
           : opponentCards.filter(
-              (_, index) => index !== selectedOpponentCardIndex
-            );
+            (_, index) => index !== selectedOpponentCardIndex
+          );
 
       return {
         playerCards: updatedPlayerCards,
@@ -165,9 +161,9 @@ export function useCombatGame() {
     }, []);
 >>>>>>> a91ed5f2cd4023b4b38cc040e644c63bb7ed7880
 
-    const handleHandLeave = useCallback(() => {
-        setHoverPlayerHand(false);
-    }, []);
+  const handleHandLeave = useCallback(() => {
+    setHoverPlayerHand(false);
+  }, []);
 
 <<<<<<< HEAD
   const handlePass = useCallback(() => {

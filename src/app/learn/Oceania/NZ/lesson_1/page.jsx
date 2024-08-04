@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -14,6 +14,8 @@ import {
 } from "react-icons/fa6";
 
 const TitlePage = () => {
+  const audioRef = useRef(null);
+  const backgroundAudioRef = useRef(null);
   const [isZoomed, setIsZoomed] = useState(false); // State to control zoom
   const [focusedButtonIndex, setFocusedButtonIndex] = useState(null);
   const [showButton, setShowButton] = useState(false);
@@ -42,6 +44,22 @@ const TitlePage = () => {
     visible: { scale: 1, opacity: 1 },
     focused: { scale: 1.3, opacity: 1 }, // Zoom in around the button
   };
+
+  // Play background music
+  useEffect(() => {
+    backgroundAudioRef.current.play();
+  }, []);
+
+
+  // when surfer button is clicked, play surfer_recording.mp3
+  useEffect(() => {
+    if (focusedButtonIndex === 0) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  }, [focusedButtonIndex]);
 
   const buttons = [
     {
@@ -172,6 +190,14 @@ const TitlePage = () => {
           Take the Quiz
         </button>
       )}
+      <audio ref={backgroundAudioRef} preload="auto" loop>
+        <source src="/Audio/sea_sound.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio ref={audioRef} preload="auto">
+        <source src="/Audio/surfer_recording.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   );
 };
