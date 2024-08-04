@@ -5,10 +5,12 @@ import { IoEarth } from "react-icons/io5";
 import { RiPlanetFill } from "react-icons/ri";
 import { GiStoneTablet } from "react-icons/gi";
 import { Avatar } from "@mui/material";
+import ParticlesComponent from "../../components/Particles";
+
 
 export default function page() {
   return (
-    <div className="flex flex-col gap-[2rem] pt-[1rem] font-normal text-[20px] min-w-full ">
+    <div className="flex flex-col gap-[2rem] pt-[1rem] font-normal text-[20px] min-w-full min-h-full ">
       <Avatar src="/avatar.jpg" sx={{ width: 80, height: 80 }}/>
       <p>Welcome, JavaSkunk!</p>
       <div className="flex flex-row gap-[0.5rem] items-center">

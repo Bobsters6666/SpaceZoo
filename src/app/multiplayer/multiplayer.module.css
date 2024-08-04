@@ -33,7 +33,7 @@
 .player_avatar {
   position: fixed; /* Fixed position to keep it at the bottom */
   bottom: 25%; /* Distance from the bottom of the page */
-  right: 20%; /* Center horizontally */
+  right: 13%; /* Center horizontally */
   height: 100px; /* Avatar height */
   width: 100px; /* Avatar width */
 }
@@ -41,7 +41,7 @@
 .player_name {
   position: fixed; /* Fixed position to keep it at the bottom */
   bottom: 21%; /* Distance from the bottom of the page */
-  right: 19%; /* Center horizontally */
+  right: 12%; /* Center horizontally */
   font-size: 1.5rem;
   color: azure;
   background-color: rgba(0, 0, 0, 0.5);
@@ -50,7 +50,7 @@
 .opponent_avatar {
   position: fixed; /* Fixed position to keep it at the bottom */
   top: 10%; /* Distance from the bottom of the page */
-  left: 20%; /* Center horizontally */
+  left: 13%; /* Center horizontally */
   height: 100px; /* Avatar height */
   width: 100px; /* Avatar width */
 }
@@ -58,7 +58,7 @@
 .opponent_name {
   position: fixed; /* Fixed position to keep it at the bottom */
   top: 20%; /* Distance from the bottom of the page */
-  left: 19%; /* Center horizontally */
+  left: 12%; /* Center horizontally */
   font-size: 1.5rem;
   color: azure;
   background-color: rgba(0, 0, 0, 0.5);
