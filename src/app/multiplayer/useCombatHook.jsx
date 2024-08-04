@@ -150,7 +150,7 @@ export function useCombatGame() {
 
   const determineCrashWinnerCoinFlip = useCallback((playerCard, opponentCard, playerIndex, opponentIndex) => {
     // 50/50 chance of either player winning
-    return Math.random() < 0.5 ? "player" : "opponent";
+    return Math.random() < 0.4 ? "player" : "opponent";
   }, []);
 
 
