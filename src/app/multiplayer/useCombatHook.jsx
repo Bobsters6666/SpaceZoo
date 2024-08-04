@@ -148,9 +148,13 @@ export function useCombatGame() {
     return "tie";
   }, [opponentAnimalHealths, playerAnimalHealths, updateHealth]);
 
-  const determineCrashWinnerCoinFlip = useCallback((playerCard, opponentCard, playerIndex, opponentIndex) => {
+  const determineCrashWinnerCoinFlip = useCallback((playerIndex, opponentIndex) => {
     // 50/50 chance of either player winning
-    return Math.random() < 0.4 ? "player" : "opponent";
+    // increased chance when player has higher attack
+    const playerCard = playerAnimals[playerIndex];
+    const opponentCard = opponentAnimals[opponentIndex];
+    const playerChance = playerCard.stats.attack / (playerCard.stats.attack + opponentCard.stats.attack);
+    return Math.random() < playerChance ? "player" : "opponent";
   }, []);
 
 
@@ -255,8 +259,6 @@ export function useCombatGame() {
 
           setTimeout(() => {
             const winner = determineCrashWinnerCoinFlip(
-              playerAnimals[selectedCard],
-              opponentAnimals[newSelectedOpponentCard],
               selectedCard,
               newSelectedOpponentCard
             );
