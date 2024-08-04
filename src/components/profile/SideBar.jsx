@@ -24,7 +24,7 @@ const SideBar = () => {
 
     return (
         <div className="flex flex-col text-lg gap-[1rem] p-[2rem] border-r-[0.2] border-gray-500 font-medium min-w-[15rem]">
-            <Link href="/profile" className={ `hover:text-[#84c4f5] hover:scale-105 transition-all duration-300 ${isProfilePage ? 'text-[#84c4f5]': ''}`}>Profile</Link>
+            <Link href="/profile" className={ `hover:text-[#84c4f5] hover:scale-105 transition-all duration-300 ${isProfilePage ? 'text-[#84c4f5]': ''}`}>Dashboard</Link>
             <div className="flex flex-row items-center justify-between gap-[1rem]">
                 <p>Collections</p>
                 <button className="p-[0.5rem] text-gray-200 hover:text-gray-500 transition-all duration-300 " onClick={() => setIsCollapsed(!isCollapsed)}>{isCollapsed ? <FaChevronDown size="15" /> : <FaChevronUp size="15" />}</button>

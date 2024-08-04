@@ -1,10 +1,11 @@
 "use client";
 import "./index.css";
-
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AnimalCard from "../../components/AnimalCard";
 import Link from "next/link";
+import ParticlesComponent from "../../components/Particles";
+
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,15 +23,18 @@ export default function Page() {
 
   return (
     <div className="w-screen h-screen grid place-items-center">
-      <Image
+       <ParticlesComponent />
+ 
+
+      {/* <Image
         src="/profilebg.jpeg"
         alt="stars"
         layout="fill"
         className="w-screen h-screen absolute -z-10"
-      />
+      /> */}
       <div
         onClick={handleClick}
-        className={`text-3xl font-semibold h-64 w-64 bg-red-600 bg-opacity-80 text-white grid place-items-center rounded-full cursor-pointer transition-all duration-250 hover:bg-opacity-100 shadow-2xl ${
+        className={`z-50 text-3xl font-semibold h-64 w-64 bg-red-600 bg-opacity-80 text-white grid place-items-center rounded-full cursor-pointer transition-all duration-250 hover:bg-opacity-100 shadow-2xl ${
           isLoading ? "animate-spin-border" : ""
         }`}
       >

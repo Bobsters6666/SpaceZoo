@@ -8,7 +8,7 @@ const ProfileAnimalCard = ({animal, locked = false}) => {
 
   return (
     <ul className="card-wrapper">
-      <li className="card">
+      <li className={`card ${locked? 'locked': ''}`}>
         <img 
           src={animal.photoUrl} 
           alt={`${animal.name} Image`} 

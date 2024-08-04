@@ -13,6 +13,8 @@
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.6",
     "@react-google-maps/api": "^2.19.3",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
     "@vis.gl/react-google-maps": "^1.1.0",
     "framer-motion": "^11.3.21",
     "next": "14.2.5",
