@@ -184,7 +184,11 @@ const TitlePage = () => {
 
       {showButton && (
         <button
-          className="absolute right-10 bottom-10 text-xl px-6 py-4 bg-green-500 rounded-full shadow-2xl font-bold transition-all duration-300 hover:bg-green-800 hover:text-white hover:scale-[102%]"
+          style={{
+            background:
+              "linear-gradient(162deg, rgba(253,234,76,1) 13%, rgba(0,212,255,1) 100%)",
+          }}
+          className="absolute right-10 bottom-10 text-xl px-6 py-4 rounded-full shadow-2xl font-bold transition-all duration-300 hover:bg-green-800 hover:text-white hover:scale-[102%]"
           onClick={() => router.push("/quiz")}
         >
           Take the Quiz

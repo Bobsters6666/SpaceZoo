@@ -24,7 +24,7 @@ export default function page() {
       title: "Geography",
       image: "/NZBeach.jpg",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "New Zealand is a mountainous island nation with diverse landscapes, ranging from volcanic plateaus to snow-capped peaks and stunning coastlines. Its geographic isolation has created a unique ecosystem rich in native flora and fauna.",
       link: "/learn/Oceania/NZ/lesson_1",
     },
     {
@@ -80,13 +80,15 @@ export default function page() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        maxWidth="md"
+        PaperProps={{ sx: { borderRadius: "20px" } }}
       >
         {currentModalData && (
           <Box p={3}>
-            <Typography variant="h3" pb={2}>
+            <Typography align="center" variant="h3" pb={4}>
               {currentModalData.title}
             </Typography>
-            <Grid container spacing={2} alignItems="center">
+            <Grid container spacing={8} alignItems="center">
               <Grid item xs={12} sm={6}>
                 <img
                   src={currentModalData.image}
@@ -100,7 +102,10 @@ export default function page() {
             </Grid>
             <Box mt={2} display="flex" justifyContent="flex-end">
               <Link href={currentModalData.link} shallow>
-                <Button variant="contained">Learn</Button>
+                <Button variant="contained">
+                  Learn{" "}
+                  <img src="/doubleArrows.png" alt="arrows" width="20px" />
+                </Button>
               </Link>
             </Box>
           </Box>
