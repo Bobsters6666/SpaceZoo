@@ -22,11 +22,11 @@ export default function App() {
       {currentQuestion === 2 && (
         <QuizModal2 onNextQuestion={handleNextQuestion} />
       )}
-      {currentQuestion > 2 && (
+      {/* {currentQuestion > 2 && (
         <div className="score-container">
           <p>Total Score: {totalScore}</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
