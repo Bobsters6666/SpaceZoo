@@ -50,7 +50,6 @@ const TitlePage = () => {
     backgroundAudioRef.current.play();
   }, []);
 
-
   // when surfer button is clicked, play surfer_recording.mp3
   useEffect(() => {
     if (focusedButtonIndex === 0) {
@@ -143,10 +142,10 @@ const TitlePage = () => {
                 <div className="bg-white bg-opacity-80 p-4 rounded shadow-lg w-[300px] text-sm absolute">
                   <p className="font-semibold">{button.description}</p>
                   <button
-                    onClick={handleExitClick} // Exit handler
-                    className="bg-red-600 hover:opacity-75 text-white text-xs font-bold py-2 px-3 rounded mt-4 flex items-center gap-2"
+                    onClick={handleExitClick}
+                    className=" hover:opacity-75 text-white bg-blue-600 text-md font-bold py-2 px-3 rounded mt-4 mr-auto gap-2"
                   >
-                    Exit <FaX size={10} />
+                    Close
                   </button>
                 </div>
               </div>

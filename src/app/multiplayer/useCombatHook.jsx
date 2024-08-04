@@ -22,11 +22,14 @@ export function useCombatGame() {
   const [selectedOpponentCard, setSelectedOpponentCard] = useState(null);
   const [playerAnimals, setPlayerAnimals] = useState(getRandomAnimals(CARD_COUNT));
   const [opponentAnimals, setOpponentAnimals] = useState(getRandomAnimals(CARD_COUNT));
-  const [playerCards, setPlayerCards] = useState(playerAnimals.map((animal) => <CustomAnimalCard animal={animal} />));
+  const [playerAnimalHealths, setPlayerAnimalHealths] = useState(playerAnimals.map((animal) => animal.stats.health));
+  const [opponentAnimalHealths, setOpponentAnimalHealths] = useState(opponentAnimals.map((animal) => animal.stats.health));
+  const [playerCards, setPlayerCards] = useState(playerAnimals.map((animal) => <CustomAnimalCard animal={animal}
+    health={playerAnimalHealths[playerAnimals.indexOf(animal)]} />));
   const [opponentCards, setOpponentCards] = useState(
     [...Array(CARD_COUNT)].map(() => <BlankAnimalCard />)
   );
-  const [actualOpponentCards, setActualOpponentCards] = useState(opponentAnimals.map((animal) => <CustomAnimalCard animal={animal} />));
+  const [actualOpponentCards, setActualOpponentCards] = useState(opponentAnimals.map((animal) => <CustomAnimalCard animal={animal} health={opponentAnimalHealths[opponentAnimals.indexOf(animal)]} />));
   const [visiblePlayerCards, setVisiblePlayerCards] = useState(0);
   const [visibleOpponentCards, setVisibleOpponentCards] = useState(0);
   const [showStartScreen, setShowStartScreen] = useState(true);
@@ -75,27 +78,81 @@ export function useCombatGame() {
   }, []);
 
   const selectOpponentCard = useCallback((cards) => {
-    return Math.floor(Math.random() * cards.length);
+    const validCards = cards.filter(card => card !== null && card.props.health > 0 && cards.indexOf(card) !== -1);
+    return validCards.length ? Math.floor(Math.random() * validCards.length) : -1;
   }, []);
 
   const updateOpponentCards = useCallback(
     (prevOpponentCards, selectedOpponentCard) => {
+      if (selectedOpponentCard === -1) return prevOpponentCards;
+
+      // Ensure that the actualOpponentCards do not contain null values
+      const filteredActualOpponentCards = actualOpponentCards.filter(card => card !== null);
+
       return prevOpponentCards.map((card, index) =>
-        index === selectedOpponentCard ? actualOpponentCards[index] : card
+        index === selectedOpponentCard ? filteredActualOpponentCards[index] : card
       );
     },
     [actualOpponentCards]
   );
 
-  const determineCrashWinner = useCallback((playerCard, opponentCard) => {
-    console.log(playerCard, opponentCard);
-    const playerWins = playerCard.stats.attack > opponentCard.stats.health;
-    const opponentWins = opponentCard.stats.attack > playerCard.stats.health;
+  useEffect(() => {
+    console.log("Updated player healths: " + playerAnimalHealths);
+  }, [playerAnimalHealths]);
+
+  useEffect(() => {
+    console.log("Updated opponent healths: " + opponentAnimalHealths);
+  }, [opponentAnimalHealths]);
+
+
+
+  const updateHealth = (playerIndex, newPlayerHealth, opponentIndex, newOpponentHealth) => {
+    console.log("Before updating healths:");
+    console.log("Player healths: ", playerAnimalHealths);
+    console.log("Opponent healths: ", opponentAnimalHealths);
+
+    setPlayerAnimalHealths((prevHealths) => {
+      const updatedHealths = [...prevHealths];
+      updatedHealths[playerIndex] = newPlayerHealth;
+      return updatedHealths;
+    });
+
+    setOpponentAnimalHealths((prevHealths) => {
+      const updatedHealths = [...prevHealths];
+      updatedHealths[opponentIndex] = newOpponentHealth;
+      return updatedHealths;
+    });
+
+    // Note: The following log will not show updated values immediately
+    // Use the useEffect hooks above to verify updates.
+    console.log("Update initiated.");
+  };
+
+
+  const determineCrashWinner = useCallback((playerCard, opponentCard, playerIndex, opponentIndex) => {
+    const playerWins = playerCard.stats.attack >= opponentAnimalHealths[opponentIndex];
+    const opponentWins = opponentCard.stats.attack >= playerAnimalHealths[playerIndex];
+
+    console.log("Player card attack: " + playerCard.stats.attack);
+    console.log("Opponent card attack: " + opponentCard.stats.attack);
+
+    const playerHealth = playerAnimalHealths[playerIndex] - opponentCard.stats.attack;
+    const opponentHealth = opponentAnimalHealths[opponentIndex] - playerCard.stats.attack;
+    console.log("Health of player " + playerIndex + ": " + playerHealth);
+    console.log("Health of opponent " + opponentIndex + ": " + opponentHealth);
+
+    updateHealth(playerIndex, playerHealth, opponentIndex, opponentHealth);
 
     if (playerWins && !opponentWins) return "player";
     if (opponentWins && !playerWins) return "opponent";
     return "tie";
+  }, [opponentAnimalHealths, playerAnimalHealths, updateHealth]);
+
+  const determineCrashWinnerCoinFlip = useCallback((playerCard, opponentCard, playerIndex, opponentIndex) => {
+    // 50/50 chance of either player winning
+    return Math.random() < 0.5 ? "player" : "opponent";
   }, []);
+
 
   const checkGameOver = useCallback((playerCards, opponentCards) => {
     const playerCardsRemaining = playerCards.filter(
@@ -106,6 +163,7 @@ export function useCombatGame() {
     ).length;
 
     if (playerCardsRemaining === 0) {
+      1
       setPlayerWon(false);
       return "Game Over! The Opponent Won";
     } else if (opponentCardsRemaining === 0) {
@@ -123,14 +181,17 @@ export function useCombatGame() {
       selectedCardIndex,
       selectedOpponentCardIndex
     ) => {
-      const updatedPlayerCards =
-        winner === "player" || winner === "tie"
-          ? playerCards
-          : playerCards.map((card, index) => index === selectedCardIndex ? null : card);
-      const updatedOpponentCards =
-        winner === "opponent" || winner === "tie"
-          ? opponentCards
-          : opponentCards.map((card, index) => index === selectedOpponentCardIndex ? null : card);
+      const updatedPlayerCards = playerCards.map((card, index) =>
+        index === selectedCardIndex && winner !== "player"
+          ? null
+          : card
+      );
+
+      const updatedOpponentCards = opponentCards.map((card, index) =>
+        index === selectedOpponentCardIndex && winner !== "opponent"
+          ? null
+          : card
+      );
 
       return {
         playerCards: updatedPlayerCards,
@@ -139,6 +200,34 @@ export function useCombatGame() {
     },
     []
   );
+
+  useEffect(() => {
+    setPlayerCards(
+      playerAnimals.map((animal, index) => (
+        playerAnimalHealths[index] > 0 ? (
+          <CustomAnimalCard
+            key={index}
+            animal={animal}
+            health={playerAnimalHealths[index]}
+            /* Add tint if the card has less than full health */
+            tinted={playerAnimalHealths[index] < playerAnimals[index].stats.health}
+          />
+        ) : null
+      ))
+    );
+    setActualOpponentCards(
+      opponentAnimals.map((animal, index) => (
+        opponentAnimalHealths[index] > 0 ? (
+          <CustomAnimalCard
+            key={index}
+            animal={animal}
+            health={opponentAnimalHealths[index]}
+          />
+        ) : null
+      ))
+    )
+  }, [playerAnimalHealths, playerAnimals]); // Ensure playerAnimals is included in the dependency array
+
 
   const startGame = useCallback(() => {
     setShowStartScreen(false);
@@ -151,16 +240,27 @@ export function useCombatGame() {
     setTimeout(() => {
       if (selectedCard !== null) {
         const newSelectedOpponentCard = selectOpponentCard(actualOpponentCards);
+
         setSelectedOpponentCard(newSelectedOpponentCard);
         setOpponentCards((prevOpponentCards) =>
           updateOpponentCards(prevOpponentCards, newSelectedOpponentCard)
         );
 
+        // Print healths before
+        console.log("Player healths before: " + playerAnimalHealths);
+        console.log("Opponent healths before: " + opponentAnimalHealths);
+
         setTimeout(() => {
           setIsCardCrashing(true);
 
           setTimeout(() => {
-            const winner = determineCrashWinner(playerAnimals[selectedCard], opponentAnimals[newSelectedOpponentCard]);
+            const winner = determineCrashWinner(
+              playerAnimals[selectedCard],
+              opponentAnimals[newSelectedOpponentCard],
+              selectedCard,
+              newSelectedOpponentCard
+            );
+
             const {
               playerCards: newPlayerCards,
               opponentCards: newOpponentCards,
@@ -174,8 +274,15 @@ export function useCombatGame() {
 
             setPlayerCards(newPlayerCards);
             setOpponentCards(newOpponentCards);
+            setActualOpponentCards((prevCards) =>
+              prevCards.map((card, index) =>
+                index === newSelectedOpponentCard && winner !== "opponent"
+                  ? null
+                  : card
+              )
+            );
             setWinnerMessage(
-              winner === "player" ? "Player Wins!" : "Opponent Wins!"
+              winner === "player" ? "Opponent card is down!" : winner === "opponent" ? "Player card is down!" : "It's a tie!"
             );
 
             const gameOverMsg = checkGameOver(newPlayerCards, newOpponentCards);
@@ -183,6 +290,10 @@ export function useCombatGame() {
               setGameOverMessage(gameOverMsg);
               setGameOver(true);
             } else {
+              // Print healths after
+              console.log("Player healths after: " + playerAnimalHealths);
+              console.log("Opponent healths after: " + opponentAnimalHealths);
+
               setSelectedCard(null);
               setSelectedOpponentCard(null);
               setIsCardCrashing(false);
@@ -204,6 +315,7 @@ export function useCombatGame() {
     updateCardsAfterCrash,
     checkGameOver,
   ]);
+
 
   return {
     selectedCard,

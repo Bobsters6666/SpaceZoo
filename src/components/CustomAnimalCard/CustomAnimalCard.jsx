@@ -18,7 +18,7 @@ const getBorderStyle = (rarity) => {
   }
 };
 
-const CustomAnimalCard = React.memo(({ animal }) => {
+const CustomAnimalCard = React.memo(({ animal, health = animal.stats.health, tinted = false }) => {
   return (
     <ul className="card-wrapper w-[200px]">
       <li className="card w-[200px]">
@@ -29,7 +29,11 @@ const CustomAnimalCard = React.memo(({ animal }) => {
               border: getBorderStyle(animal.rarity)[0],
             }}
           >
-            <img src={animal.photoUrl} alt={`${animal.name} Image`} />
+            <img
+              src={animal.photoUrl}
+              alt={`${animal.name} Image`}
+              className={tinted ? "tinted-image" : ""}
+            />
             <div className="font-semibold">
               <h3 className="drop-shadow-2xl">{animal.name}</h3>
               <i className="attack-stat flex items-center gap-2">
@@ -37,7 +41,7 @@ const CustomAnimalCard = React.memo(({ animal }) => {
                 <FaHandFist size={12} color="white" />
               </i>
               <i className="health-stat flex items-center gap-2">
-                Health: {animal.stats.health} <FaHeart size={12} color="red" />
+                Health: {health} <FaHeart size={12} color="red" />
               </i>
             </div>
 
@@ -53,7 +57,7 @@ const CustomAnimalCard = React.memo(({ animal }) => {
             style={{ border: getBorderStyle(animal.rarity) }}
           >
             <img
-              className="back-image"
+              className={`back-image ${tinted ? "tinted-image" : ""}`}
               src={animal.photoUrl}
               alt={`${animal.name} Image`}
             />

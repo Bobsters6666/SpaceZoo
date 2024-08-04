@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <main className="w-screen h-screen overflow-hidden ">
       <div className="flex items-center justify-center mt-6 gap-4 bg-white w-fit mx-auto px-8 py-3 bg-opacity-30 rounded-full cursor-pointer shadow-xl">
-        <h1 className="text-white text-center text-2xl font-bold">World Map</h1>
+        <h1 className="text-white text-center text-2xl font-bold">
+          Explore Earth
+        </h1>
         <CgChevronDown size={32} color="white" />
       </div>
 
@@ -39,7 +41,7 @@ export default function Home() {
                 the long white cloud
               </p>
               <p className="pt-2">Dare to explore?</p>
-              <div className="flex justify-between mt-6">
+              <div className="flex justify-end mt-6">
                 <Link href={"/nz"}>
                   <button className="bg-blue-600 px-4 py-2 flex gap-2 items-center rounded-lg duration-300 transition-all hover:bg-blue-700">
                     Explore <FaArrowRight />
