@@ -23,7 +23,7 @@ const animals = [
     rarity: "Epic",
     stats: {
       health: 70,
-      attack: 40,
+      attack: 90,
     },
   },
   {
@@ -35,7 +35,7 @@ const animals = [
       "Tuatara have a third 'parietal eye' on the top of their head, which is sensitive to light.",
     rarity: "Legendary",
     stats: {
-      health: 80,
+      health: 100,
       attack: 20,
     },
   },
@@ -63,8 +63,8 @@ const animals = [
       "Fur seals can dive deeper and longer than any other fur seal species, reaching depths of over 200 meters.",
     rarity: "Uncommon",
     stats: {
-      health: 65,
-      attack: 35,
+      health: 95,
+      attack: 95,
     },
   },
   {
@@ -90,7 +90,7 @@ const animals = [
     funFact: "Some species of weta can weigh more than a sparrow.",
     rarity: "Epic",
     stats: {
-      health: 55,
+      health: 105,
       attack: 50,
     },
   },
@@ -104,8 +104,8 @@ const animals = [
       "Kākāpōs are the world's heaviest parrots and have a unique booming call.",
     rarity: "Legendary",
     stats: {
-      health: 90,
-      attack: 15,
+      health: 80,
+      attack: 85,
     },
   },
   {
@@ -186,7 +186,7 @@ const animals = [
       "Kākās are known to peel bark off trees to feed on the sap underneath.",
     rarity: "Uncommon",
     stats: {
-      health: 55,
+      health: 85,
       attack: 35,
     },
   },
