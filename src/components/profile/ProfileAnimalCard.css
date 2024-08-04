@@ -31,6 +31,10 @@
     min-width: 100%;
     object-fit: cover;
   }
+
+  .card.locked img {
+    filter: blur(4px);
+  }
   
   .card h3, .card p {
     position: absolute;

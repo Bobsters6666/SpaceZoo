@@ -16,7 +16,11 @@ export default function page() {
         style={{ overflowX: "hidden" }}
       >
         {profileAnimals.map((animal) => (
-          <ProfileAnimalCard animal={animal} key={animal.name} locked={animal.locked}/>
+          <ProfileAnimalCard
+            key={animal.name}
+            animal={animal}
+            locked={animal.locked}
+          />
         ))}
       </div>
     </div>

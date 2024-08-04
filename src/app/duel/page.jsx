@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
 import Link from "next/link";
+import ParticlesComponent from "../../components/Particles";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,12 +22,13 @@ export default function Page() {
 
   return (
     <div className="w-screen h-screen grid place-items-center">
-      <Image
+      <ParticlesComponent />
+      {/* <Image
         src="/profilebg.jpeg"
         alt="stars"
         layout="fill"
         className="w-screen h-screen absolute -z-10"
-      />
+      /> */}
       <div
         onClick={handleClick}
         style={{
@@ -34,7 +36,7 @@ export default function Page() {
             "linear-gradient(324deg, rgba(169,52,156,1) 25%, rgba(23,79,141,1) 83%)",
           boxShadow: "5px 5px 20px #888888",
         }}
-        className={`text-3xl font-semibold h-60 w-60 bg-opacity-80 text-white grid place-items-center rounded-full cursor-pointer transition-all duration-250 hover:bg-opacity-100 shadow-2xl ${
+        className={`z-50 text-3xl font-semibold h-60 w-60 bg-opacity-80 text-white grid place-items-center rounded-full cursor-pointer transition-all duration-250 hover:bg-opacity-100 shadow-2xl ${
           isLoading ? "animate-spin-border" : ""
         }`}
       >
