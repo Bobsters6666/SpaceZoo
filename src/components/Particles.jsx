@@ -35,7 +35,7 @@ function ParticlesComponent() {
             },
             particles: {
               color: {
-                value: ["#FFFFFF","#f7f7f7", "#a9349c", "#174f8d"],
+                value: ["#FFFFFF","#f7f7f7", "#174f8d"],
               },
 
               move: {
