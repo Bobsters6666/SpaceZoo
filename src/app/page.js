@@ -41,7 +41,7 @@ export default function Home() {
                 the long white cloud
               </p>
               <p className="pt-2">Dare to explore?</p>
-              <div className="flex justify-between mt-6">
+              <div className="flex justify-end mt-6">
                 <Link href={"/nz"}>
                   <button className="bg-blue-600 px-4 py-2 flex gap-2 items-center rounded-lg duration-300 transition-all hover:bg-blue-700">
                     Explore <FaArrowRight />
