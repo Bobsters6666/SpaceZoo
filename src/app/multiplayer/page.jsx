@@ -70,7 +70,9 @@ export default function Combat() {
     <div className={styles.combat}>
       {showStartScreen && (
         <div className={styles.startScreen}>
-          <h1>JavaSkunk vs DEVSpacers</h1>
+          <h1>
+            <i>JavaSkunk</i> vs <i>DEVSpacers</i>
+          </h1>
           <button onClick={startGame}>Start Game</button>
         </div>
       )}
