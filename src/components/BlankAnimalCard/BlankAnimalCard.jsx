@@ -6,7 +6,7 @@ const AnimalCard = React.memo(() => {
     <ul className="card-wrapper w-[200px]">
       <li className="card w-[200px]">
         <div className="card-inner">
-            <img src="/crate.jpg" alt={`Opponent Card`} />
+          <img src="/card-back2.jpg" alt={`Opponent Card`} />
         </div>
       </li>
     </ul>
