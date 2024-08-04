@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { loadSlim } from "@tsparticles/slim";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 function ParticlesComponent() {
   const [init, setInit] = useState(false);
@@ -35,7 +35,7 @@ function ParticlesComponent() {
             },
             particles: {
               color: {
-                value: ["#FFFFFF","#f7f7f7", "#174f8d"],
+                value: ["#FFFFFF", "#f7f7f7", "#174f8d"],
               },
 
               move: {
