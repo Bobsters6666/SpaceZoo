@@ -32,7 +32,7 @@
 
 .player_avatar {
   position: fixed; /* Fixed position to keep it at the bottom */
-  bottom: 15%; /* Distance from the bottom of the page */
+  bottom: 25%; /* Distance from the bottom of the page */
   right: 20%; /* Center horizontally */
   height: 100px; /* Avatar height */
   width: 100px; /* Avatar width */
@@ -40,7 +40,7 @@
 
 .player_name {
   position: fixed; /* Fixed position to keep it at the bottom */
-  bottom: 11%; /* Distance from the bottom of the page */
+  bottom: 21%; /* Distance from the bottom of the page */
   right: 19%; /* Center horizontally */
   font-size: 1.5rem;
   color: azure;
@@ -71,7 +71,7 @@
   align-items: center;
   gap: 15px;
   position: fixed; /* Fixed position to keep it at the bottom */
-  bottom: -150px; /* Distance from the bottom of the page */
+  bottom: -20px; /* Distance from the bottom of the page */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center alignment correction */
   padding: 20px;
@@ -132,7 +132,11 @@
   bottom: 20px; /* Distance from the bottom of the page */
   right: 20px; /* Distance from the right of the page */
   padding: 10px 20px; /* Padding for button */
-  background-color: #aa0000;
+  background: linear-gradient(
+    169deg,
+    rgba(19, 84, 1, 1) 48%,
+    rgba(38, 134, 30, 1) 79%
+  );
   color: white;
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
@@ -142,7 +146,7 @@
 }
 
 .pass_button:hover {
-  background-color: #ff0000; /* Lighter red on hover */
+  background-color: #1eb478; /* Lighter red on hover */
 }
 
 /* Turn text will be in the bottom left corner */

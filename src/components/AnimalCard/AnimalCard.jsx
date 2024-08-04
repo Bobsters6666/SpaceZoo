@@ -13,15 +13,15 @@ const AnimalCard = React.memo(() => {
   const getBorderStyle = (rarity) => {
     switch (rarity) {
       case "Common":
-        return ["3px solid #cccccc", "#cccccc"];
+        return ["3px solid #b3b3b3", "#b3b3b3"];
       case "Uncommon":
-        return ["3px solid #00ff00", "#00ff00"];
+        return ["3px solid #278f3f", "#278f3f"];
       case "Rare":
-        return ["3px solid #0000ff", "#0000ff"];
+        return ["3px solid #3131b0", "#3131b0"];
       case "Epic":
-        return ["3px solid #800080", "#800080"];
+        return ["3px solid #ffbf00", "#ffbf00"];
       case "Legendary":
-        return ["3px solid #f80000", "#f80000"];
+        return ["3px solid #ab2929", "#ab2929"];
     }
   };
 
@@ -45,7 +45,8 @@ const AnimalCard = React.memo(() => {
                 <FaHandFist size={12} color="white" />
               </i>
               <i className="health-stat flex items-center gap-2">
-                Health: {animal.stats.health} <FaHeart size={12} color="red" />
+                Health: {animal.stats.health}{" "}
+                <FaHeart size={12} color="#E50000" />
               </i>
             </div>
 
