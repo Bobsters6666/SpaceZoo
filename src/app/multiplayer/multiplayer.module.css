@@ -32,34 +32,37 @@
 
 .player_avatar {
   position: fixed; /* Fixed position to keep it at the bottom */
-  bottom: 160px; /* Distance from the bottom of the page */
-  left: 48%; /* Center horizontally */
+  bottom: 15%; /* Distance from the bottom of the page */
+  right: 20%; /* Center horizontally */
   height: 100px; /* Avatar height */
   width: 100px; /* Avatar width */
 }
 
 .player_name {
   position: fixed; /* Fixed position to keep it at the bottom */
-  bottom: 245px; /* Distance from the bottom of the page */
-  left: 47.5%; /* Center horizontally */
+  bottom: 11%; /* Distance from the bottom of the page */
+  right: 19%; /* Center horizontally */
   font-size: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+  color: azure;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .opponent_avatar {
   position: fixed; /* Fixed position to keep it at the bottom */
-  top: 160px; /* Distance from the bottom of the page */
-  left: 48%; /* Center horizontally */
+  top: 10%; /* Distance from the bottom of the page */
+  left: 20%; /* Center horizontally */
   height: 100px; /* Avatar height */
   width: 100px; /* Avatar width */
 }
 
 .opponent_name {
   position: fixed; /* Fixed position to keep it at the bottom */
-  top: 245px; /* Distance from the bottom of the page */
-  left: 47%; /* Center horizontally */
+  top: 20%; /* Distance from the bottom of the page */
+  left: 19%; /* Center horizontally */
   font-size: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
+  color: azure;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-weight: italic;
 }
 
 .player_hand {
@@ -148,10 +151,12 @@
   bottom: 20px; /* Distance from the bottom of the page */
   left: 20px; /* Distance from the left of the page */
   padding: 10px; /* Padding for text */
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
   font-size: 1.5rem;
+  color: azure;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
 }
 
 .turn_counter {
@@ -159,10 +164,12 @@
   top: 20px;
   left: 20px;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.9);
+  color: azure;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .winner_message {
@@ -170,16 +177,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  backgroundcolor: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 20px;
-  borderradius: 10px;
-  fontsize: 24px;
-  zindex: 1000;
+  border-radius: 10px;
+  font-size: 24px;
+  z-index: 1000;
 }
 
 .combat {
-  background-image: url("/savannah_background.jpg");
+  background-image: url("/forest.jpg");
   background-size: cover; /* Adjust the image to cover the entire div */
   background-position: center; /* Center the image */
   background-repeat: no-repeat;

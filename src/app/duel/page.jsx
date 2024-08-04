@@ -1,6 +1,5 @@
 "use client";
 import "./index.css";
-
 import Image from "next/image";
 import React, { useState } from "react";
 import AnimalCard from "../../components/AnimalCard/AnimalCard";
