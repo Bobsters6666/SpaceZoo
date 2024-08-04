@@ -6,7 +6,11 @@ const AnimalCard = React.memo(() => {
     <ul className="card-wrapper w-[200px]">
       <li className="card w-[200px]">
         <div className="card-inner">
-          <img src="/card-back2.jpg" alt={`Opponent Card`} />
+          <img
+            src="/cardBack.png"
+            alt={`Opponent Card`}
+            style={{ borderRadius: "10px" }}
+          />
         </div>
       </li>
     </ul>

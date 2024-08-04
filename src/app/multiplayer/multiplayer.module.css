@@ -66,7 +66,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   position: fixed; /* Fixed position to keep it at the bottom */
   bottom: -150px; /* Distance from the bottom of the page */
   left: 50%; /* Center horizontally */
@@ -103,7 +103,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   position: fixed; /* Fixed position to keep it at the top */
   top: -150px; /* Distance from the top of the page */
   left: 50%; /* Center horizontally */
