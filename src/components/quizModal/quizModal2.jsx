@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "./quizModal.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export function QuizModal2({ onNextQuestion }) {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -75,9 +76,9 @@ export function QuizModal2({ onNextQuestion }) {
                 </p>
               </div>
             </div>
-            <button id="next-button" onClick={handleCloseModal}>
-              Claim reward
-            </button>
+            <Link href="/shop/booster">
+              <button id="next-button">Claim reward</button>
+            </Link>
           </div>
         </div>
       )}
