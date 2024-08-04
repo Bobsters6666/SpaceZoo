@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./booster.module.css";
-import AnimalCard from "../../../components/AnimalCard";
+import AnimalCard from "../../../components/AnimalCard/AnimalCard";
 
 export default function Page() {
   const [isAnimating, setIsAnimating] = useState(true);
@@ -66,7 +66,6 @@ export default function Page() {
   };
 
   return (
-
     <>
       {loading ? (
         <div>Loading...</div>
@@ -109,6 +108,5 @@ export default function Page() {
         </div>
       )}
     </>
-
   );
 }
